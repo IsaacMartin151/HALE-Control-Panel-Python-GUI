@@ -44,33 +44,64 @@ def create_charts():
     x2 = 13
     x3 = 23
 
+    plotDPI = 80
 
-    figure1 = Figure(figsize=(4,3), dpi=80)
+    #Left side charts
+    figure1 = Figure(figsize=(4,3), dpi=plotDPI)
     subplot1 = figure1.add_subplot(111)
     xAxis = [float(x1),float(x2),float(x3)]
     yAxis = [float(x1),float(x2),float(x3)]
     subplot1.bar(xAxis,yAxis, color = 'lightsteelblue')
     bar1 = FigureCanvasTkAgg(figure1, root)
-    bar1.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=0)
+    bar1.get_tk_widget().place(x=0, y=50)
 
-    figure2 = Figure(figsize=(4,3), dpi=80)
+    figure2 = Figure(figsize=(4,3), dpi=plotDPI)
     subplot2 = figure2.add_subplot(111)
-    labels2 = 'Fuel Level', 'Oxidizer Level', 'Regulator pressure'
+    labels2 = 'Fuel Level', 'Oxidizer\nLevel', 'Regulator\npressure'
     pieSizes = [float(x1),float(x2),float(x3)]
     my_colors2 = ['lightblue','lightsteelblue','silver']
     explode2 = (0, 0, 0)
     subplot2.pie(pieSizes, colors=my_colors2, explode=explode2, labels=labels2, autopct='%1.1f%%', shadow=False, startangle=90)
     subplot2.axis('equal')
     pie2 = FigureCanvasTkAgg(figure2, root)
-    pie2.get_tk_widget().pack()
+    pie2.get_tk_widget().place(x=0, y=300)
 
-    figure3 = Figure(figsize=(4,3), dpi=80)
-    subplot3 = figure1.add_subplot(111)
+    figure3 = Figure(figsize=(4,3), dpi=plotDPI)
+    subplot3 = figure3.add_subplot(111)
     xAxis2 = [float(x1),float(x2),float(x3)]
     yAxis2 = [float(x1),float(x2),float(x3)]
     subplot3.bar(xAxis2,yAxis2, color = 'lightsteelblue')
     bar2 = FigureCanvasTkAgg(figure3, root)
-    bar2.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=0)
+    bar2.get_tk_widget().place(x=0, y=550)
+
+
+    #Right side charts
+    figure4 = Figure(figsize=(4,3), dpi=plotDPI)
+    subplot1 = figure4.add_subplot(111)
+    xAxis = [float(x1),float(x2),float(x3)]
+    yAxis = [float(x1),float(x2),float(x3)]
+    subplot1.bar(xAxis,yAxis, color = 'lightsteelblue')
+    bar3 = FigureCanvasTkAgg(figure4, root)
+    bar3.get_tk_widget().place(x=1200, y=50)
+
+    figure5 = Figure(figsize=(4,3), dpi=plotDPI)
+    subplot2 = figure5.add_subplot(111)
+    labels2 = 'Fuel Level', 'Oxidizer\nLevel', 'Regulator\npressure'
+    pieSizes = [float(x1),float(x2),float(x3)]
+    my_colors2 = ['lightblue','lightsteelblue','silver']
+    explode2 = (0, 0, 0)
+    subplot2.pie(pieSizes, colors=my_colors2, explode=explode2, labels=labels2, autopct='%1.1f%%', shadow=False, startangle=90)
+    subplot2.axis('equal')
+    pie3 = FigureCanvasTkAgg(figure5, root)
+    pie3.get_tk_widget().place(x=1200, y=300)
+
+    figure6 = Figure(figsize=(4,3), dpi=plotDPI)
+    subplot3 = figure6.add_subplot(111)
+    xAxis2 = [float(x1),float(x2),float(x3)]
+    yAxis2 = [float(x1),float(x2),float(x3)]
+    subplot3.bar(xAxis2,yAxis2, color = 'lightsteelblue')
+    bar4 = FigureCanvasTkAgg(figure6, root)
+    bar4.get_tk_widget().place(x=1200, y=550)
 
 def clear_charts():
     bar1.get_tk_widget().pack_forget()
@@ -88,7 +119,7 @@ def oxidizer_nogo():
     bar1.get_tk_widget().pack_forget()
     pie2.get_tk_widget().pack_forget()
 
-
+create_charts()
 #Buttons for cancelling oxidizer, fuel, and command
 fuelbutton = tk.Button (root, text=' FUEL NOGO ',command=fuel_nogo, bg='red', font=('Arial', 11, 'bold'), width=30, height = 5)
 canvas1.create_window(width/2+width/4, 180, window=fuelbutton)
@@ -148,6 +179,6 @@ canvas1.create_window(width/2 + 120, startingHeight + heightSpacing*4, window=co
 #button3 = tk.Button (root, text='Exit Application', command=root.destroy, bg='lightsteelblue2', font=('Arial', 11, 'bold'))
 #canvas1.create_window(width/2, startingHeight + 50, window=button3)
 
-create_charts()
+#create_charts()
 
 root.mainloop()
