@@ -117,7 +117,7 @@ def clear_charts():
 class MainScreen:
     #Setting variables for the GUI's main display
     width = 1600
-    height = 500
+    height = 900
 
     standardizedButtonHeight = 2
     standardizedButtonWidth = 25
@@ -323,10 +323,10 @@ class MainScreen:
         self.canvas1.create_window(self.width/2 - 120, self.startingHeight + self.heightSpacing*3, window=self.fuel_purge_button)
         self.canvas1.create_window(self.width/2 - 120, self.startingHeight + self.heightSpacing*4, window=self.fuel_main_button)
 
-        self.canvas1.create_window(self.width/2 - 180, self.startingHeight + self.heightSpacing*5, window=self.fire_button)
-        self.canvas1.create_window(self.width/2 - 60 , self.startingHeight + self.heightSpacing*5, window=self.engine_start_up_button)
+        self.canvas1.create_window(self.width/2 + self.width/4, self.startingHeight + self.heightSpacing*5, window=self.fire_button)
+        self.canvas1.create_window(self.width/2 + self.width/4, self.startingHeight + self.heightSpacing*6, window=self.engine_start_up_button)
 
-        self.canvas1.create_window(self.width/2,       self.startingHeight + self.heightSpacing*6, window=self.abort_button)
+        self.canvas1.create_window(self.width/2 + self.width/4, self.startingHeight + self.heightSpacing*7, window=self.abort_button)
 
     # change button appearance after toggle
     def configure_buttons(self):
