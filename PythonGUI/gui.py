@@ -28,37 +28,59 @@ root = tk.Tk()
 
 i = 1
 k = 0
-plotDPI = 80
+plotDPI = 60
 
 # Button states
-global fuel_nogo_on = False
-global oxidizer_nogo_on = False
-global command_nogo_on = False
+global fuel_button_on
+global oxidizer_button_on
+global command_button_on
 
-global nanny_on = False
+global fuel_press_on
+global fuel_vent_on
+global fuel_isolation_on
+global fuel_purge_on
+global fuel_main_on
 
-global sensor_stop_on = False
-global cycle_valves_on = False
-global cycle_vent_on = False
+global lox_press_on
+global lox_vent_on
+global lox_isolation_on
+global lox_chill_on
+global lox_main_on
 
-global data_live_on = False
+global nanny_on
+global sensor_stop_on
+global cycle_valves_on
+global cycle_vent_on
+global data_live_on
+global fire_on
+global engine_start_up_on
+global abort_on
 
-global fuel_press_on = True
-global fuel_vent_on = True
-global fuel_isolation_on = True
-global fuel_purge_on = True
-global fuel_main_on = True
+fuel_nogo_on = False
+oxidizer_nogo_on = False
+command_nogo_on = False
 
-global lox_press_on = True
-global lox_vent_on = True
-global lox_isolation_on = True
-global lox_chill_on = True
-global lox_main_on = True
-global lox_fill_on = True
+fuel_press_on = True
+fuel_vent_on = True
+fuel_isolation_on = True
+fuel_purge_on = True
+fuel_main_on = True
 
-global fire_on = False
-global engine_start_up_on = False
-global abort_on = False
+lox_press_on = True
+lox_vent_on = True
+lox_isolation_on = True
+lox_chill_on = True
+lox_main_on = True
+lox_fill_on = True
+
+nanny_on = False
+sensor_stop_on = False
+cycle_valves_on = False
+cycle_vent_on = False
+data_live_on = False
+fire_on = False
+engine_start_up_on = False
+abort_on = False
 
 
 
@@ -98,9 +120,9 @@ class MainScreen:
     height = 500
 
     standardizedButtonHeight = 2
-    standardizedButtonWidth = 40
+    standardizedButtonWidth = 25
     startingHeight = 350
-    heightSpacing = 45
+    heightSpacing = 40
 
     #Dummy data
     x1 = 10
@@ -119,73 +141,95 @@ class MainScreen:
 
     # toggles state of buttons when clicked
     def command_nogo_toggle():
+        global command_button_on
         command_nogo_on = not command_nogo_on
 
     def fuel_nogo_toggle():
+        global fuel_nogo_on
         fuel_nogo_on = not fuel_nogo_on
 
     def oxidizer_nogo_toggle():
+        global oxidizer_nogo_on
         oxidizer_nogo_on = not oxidizer_nogo_on
 
     def nanny_toggle():
+        global nanny_on
         nanny_on = not nanny_on
 
 
     def sensor_stop_toggle():
+        global sensor_stop_on
         sensor_stop_on = not sensor_stop_on
 
     def cycle_valves_toggle():
+        global cycle_valves_on
         cycle_valves_on = not cycle_valves_on
 
     def cycle_vent_toggle():
+        global cycle_vent_on
         cycle_vent_on = not cycle_vent_on
 
     def data_live_toggle():
+        global data_live_on
         data_live_on = not data_live_on
 
 
     def fuel_vent_toggle():
+        global fuel_vent_on
         fuel_vent_on = not fuel_vent_on
 
     def fuel_press_toggle():
+        global fuel_press_on
         fuel_press_on = not fuel_press_on
 
     def fuel_isolation_toggle():
+        global fuel_isolation_on
         fuel_isolation_on = not fuel_isolation_on
 
     def fuel_purge_toggle():
+        global fuel_purge_on
         fuel_purge_on = not fuel_purge_on
 
     def fuel_main_toggle():
+        global fuel_main_on
         fuel_main_on = not fuel_main_on
 
 
     def lox_vent_toggle():
+        global lox_vent_on
         lox_vent_on = not lox_vent_on
 
     def lox_press_toggle():
+        global lox_press_on
         lox_press_on = not lox_press_on
 
     def lox_isolation_toggle():
+        global lox_isolation_on
         lox_isolation_on = not lox_isolation_on
 
     def lox_chill_toggle():
+        global lox_chill_on
         lox_chill_on = not lox_chill_on
 
     def lox_main_toggle():
+        global lox_main_on
         lox_main_on = not lox_main_on
 
     def lox_fill_toggle():
+        global lox_fill_on
         lox_fill_on = not lox_fill_on
 
 
     def fire_toggle():
+        global fire_on
         fire_on = not fire_on
 
     def engine_start_up_toggle():
+        global engine_start_up_on
         engine_start_up_on = not engine_start_up_on
 
     def abort_toggle():
+        global abort_on
         abort_on = not abort_on
 
 
@@ -194,7 +238,7 @@ class MainScreen:
     oxidizer_nogo_button = tk.Button(root, text=' OXIDIZER \'NOGO\' ', command=oxidizer_nogo_toggle, bg='red', font=('Arial', 11))
     command_nogo_button  = tk.Button(root, text=' COMMAND \'NOGO\' ', command=command_nogo_toggle, bg='red', font=('Arial', 11))
 
-    nanny_button    = tk.Button(root, text='    Nanny \'OFF\'    ', command=nanny_toggle, bg='pink', font=('Arial', 20), width=70, height=5)
+    nanny_button    = tk.Button(root, text='    Nanny \'OFF\'    ', command=nanny_toggle, bg='pink', font=('Arial', 11))
 
     # Side buttons
     sensor_stop_button  = tk.Button(root, text=' Sensor Stop ', command=sensor_stop_toggle, fg='red', bg='gray80', font=('Arial', 11))
@@ -220,7 +264,7 @@ class MainScreen:
 
     fire_button            = tk.Button(root, text=' FIRE ', command=fire_toggle, fg='white', bg='black', font=('Arial', 10))
     engine_start_up_button = tk.Button(root, text=' Engine Start Up ', command=engine_start_up_toggle, bg='gray80', font=('Arial', 10))
-    abort_button           = tk.Button(root, text='    ABORT    ', command=abort_toggle, bg='red', font=('Arial', 20), width=70, height=5)
+    abort_button           = tk.Button(root, text='    ABORT    ', command=abort_toggle, bg='red', font=('Arial', 11))
 
 
     #set uniform sizes for buttons that don't have unique sizes
@@ -229,11 +273,11 @@ class MainScreen:
         self.oxidizer_nogo_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
         self.command_nogo_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
 
-        self.sensor_stop_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth/2)
-        self.cycle_valves_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth/2)
-        self.cycle_vent_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth/2)
+        self.sensor_stop_button.config(height=self.standardizedButtonHeight, width= self.standardizedButtonWidth//2)
+        self.cycle_valves_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2)
+        self.cycle_vent_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2)
         
-        self.data_live_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth/2)
+        self.data_live_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2)
 
         self.fuel_press_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
         self.fuel_vent_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
@@ -248,8 +292,8 @@ class MainScreen:
         self.lox_main_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
         self.lox_fill_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
 
-        self.fire_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth/2 - 1)
-        self.engine_start_up_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth/2 - 1)
+        self.fire_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2 - 1)
+        self.engine_start_up_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2 - 1)
 
 
     def draw_buttons(self):
@@ -258,13 +302,13 @@ class MainScreen:
         self.canvas1.create_window(self.width/2 - self.width/4, 180, window=self.oxidizer_nogo_button)
         self.canvas1.create_window(self.width/2, 180, window=self.command_nogo_button)
 
-        self.canvas1.create_window(self.width/2, 160, window=self.nanny_button)
+        self.canvas1.create_window(self.width/2, 220, window=self.nanny_button)
 
         self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*0, window=self.sensor_stop_button)
         self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*2, window=self.cycle_valves_button)
         self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*3, window=self.cycle_vent_button)
 
-        self.canvas1.create_window(self.width/2 + self.width/4, self.startingHeight + self.heightSpacing*0, window=self.data_live_button)
+        self.canvas1.create_window(self.width/2 + self.width/4 - 100, self.startingHeight + self.heightSpacing*0, window=self.data_live_button)
 
         self.canvas1.create_window(self.width/2 + 120, self.startingHeight + self.heightSpacing*0, window=self.lox_press_button)
         self.canvas1.create_window(self.width/2 + 120, self.startingHeight + self.heightSpacing*1, window=self.lox_vent_button)
@@ -314,7 +358,7 @@ class MainScreen:
         if cycle_valves_on:
             self.cycle_valves_button.configure(text=' Cycle Valves ON ', bg='bisque')
         else:
-            self.cycle_valves_button.configure(text=' Valve Sequence OFF ', bg='gray80')
+            self.cycle_valves_button.configure(text=' Valve Seq OFF ', bg='gray80')
 
         if cycle_vent_on:
             self.cycle_vent_button.configure(text=' Cycle Vent ON ', bg='bisque')
@@ -421,7 +465,7 @@ class MainScreen:
         subplot2.axis('equal')
         pie2 = FigureCanvasTkAgg(figure2, root)
         print("placing plot 2")
-        pie2.get_tk_widget().place(x=0, y=300)
+        pie2.get_tk_widget().place(x=0, y=250)
 
         figure3 = Figure(figsize=(4,3), dpi=plotDPI)
         subplot3 = figure3.add_subplot(111)
@@ -430,7 +474,7 @@ class MainScreen:
         subplot3.bar(xAxis2,yAxis2, color = 'lightsteelblue')
         bar2 = FigureCanvasTkAgg(figure3, root)
         print("placing plot 3")
-        bar2.get_tk_widget().place(x=0, y=550)
+        bar2.get_tk_widget().place(x=0, y=450)
 
 
         #Right side charts
@@ -441,7 +485,7 @@ class MainScreen:
         subplot4.bar(xAxis,yAxis, color = 'lightsteelblue')
         bar3 = FigureCanvasTkAgg(figure4, root)
         print("placing plot 4")
-        bar3.get_tk_widget().place(x=1200, y=50)
+        bar3.get_tk_widget().place(x=1300, y=50)
 
         figure5 = Figure(figsize=(4,3), dpi=plotDPI)
         subplot5 = figure5.add_subplot(111)
@@ -453,7 +497,7 @@ class MainScreen:
         subplot5.axis('equal')
         pie3 = FigureCanvasTkAgg(figure5, root)
         print("placing plot 5")
-        pie3.get_tk_widget().place(x=1200, y=300)
+        pie3.get_tk_widget().place(x=1300, y=250)
 
         figure6 = Figure(figsize=(4,3), dpi=plotDPI)
         subplot6 = figure6.add_subplot(111)
@@ -462,7 +506,7 @@ class MainScreen:
         subplot6.bar(xAxis2,yAxis2, color = 'lightsteelblue')
         bar4 = FigureCanvasTkAgg(figure6, root)
         print("placing plot 6")
-        bar4.get_tk_widget().place(x=1200, y=550)
+        bar4.get_tk_widget().place(x=1300, y=450)
 
         create_charts()
 
