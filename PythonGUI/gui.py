@@ -6,15 +6,6 @@ from matplotlib.figure import Figure
 #import matplotlib.animation as anim
 #from IPython.display import clear_output
 
-#Code for the 3 box entries to manually input data
-
-#entry1 = tk.Entry (root)
-#canvas1.create_window(width/2, 100, window=entry1)
-#entry2 = tk.Entry (root)
-#canvas1.create_window(width/2, 120, window=entry2)
-#entry3 = tk.Entry (root)
-#canvas1.create_window(width/2, 140, window=entry3)
-
 #x1 = float(entry1.get())
 #x2 = float(entry2.get())
 #x3 = float(entry3.get())
@@ -500,7 +491,7 @@ class FuelScreen:
 
         self.standardizedButtonHeight = 2
         self.standardizedButtonWidth = 25
-        self.startingHeight = 350
+        self.startingHeight = 150
         self.heightSpacing = 40
 
         #Dummy data
@@ -521,15 +512,8 @@ class FuelScreen:
 
         # Creating the data for the top three buttons
         self.fuel_nogo_button     = tk.Button(self.root, text=' FUEL \'NOGO\' ', command=fuel_nogo_toggle, bg='red', font=('Arial', 11))
-        self.oxidizer_nogo_button = tk.Button(self.root, text=' OXIDIZER \'NOGO\' ', command=oxidizer_nogo_toggle, bg='red', font=('Arial', 11))
-        self.command_nogo_button  = tk.Button(self.root, text=' COMMAND \'NOGO\' ', command=command_nogo_toggle, bg='red', font=('Arial', 11))
+        # self.oxidizer_nogo_button = tk.Button(self.root, text=' OXIDIZER \'NOGO\' ', command=oxidizer_nogo_toggle, bg='red', font=('Arial', 11))
         self.nanny_button    = tk.Button(self.root, text='    Nanny \'OFF\'    ', command=nanny_toggle, bg='pink', font=('Arial', 11))
-
-        # Side buttons
-        self.sensor_stop_button  = tk.Button(self.root, text=' Sensor Stop ', command=sensor_stop_toggle, fg='red', bg='gray80', font=('Arial', 11))
-        self.cycle_valves_button = tk.Button(self.root, text=' Valve Sequence OFF ', command=cycle_valves_toggle, bg='gray80', font=('Arial', 11))
-        self.cycle_vent_button   = tk.Button(self.root, text=' Cycle Vent OFF ', command=cycle_vent_toggle, bg='gray80', font=('Arial', 11))
-        self.data_live_button    = tk.Button(self.root, text=' DATA PAUSED ', command=data_live_toggle, bg='gray90', font=('Arial', 11))
 
         # Creating the data for the left column of center buttons
         self.fuel_press_button     = tk.Button(self.root, text=' ABV-PR-120 (FUEL PRESS) ', command=fuel_press_toggle, bg='green2', font=('Arial', 10))
@@ -547,21 +531,13 @@ class FuelScreen:
         # self.lox_fill_button      = tk.Button(self.root, text=' ABV-OX-250 (LOx FILL) ', command=lox_fill_toggle, bg='cyan', font=('Arial', 10))
 
         self.fire_button            = tk.Button(self.root, text='FIRE', command=fire_toggle, fg='white', bg='black', font=('Arial', 10))
-        self.engine_start_up_button = tk.Button(self.root, text='Engine Start Up', command=engine_start_up_toggle, bg='gray80', font=('Arial', 10))
         self.abort_button           = tk.Button(self.root, text='ABORT', command=abort_toggle, bg='red', font=('Arial', 11))
 
 
     #set uniform sizes for buttons that don't have unique sizes
     def initialize_configurations(self):
         self.fuel_nogo_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
-        self.oxidizer_nogo_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
-        self.command_nogo_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
-
-        self.sensor_stop_button.config(height=self.standardizedButtonHeight, width= self.standardizedButtonWidth//2)
-        self.cycle_valves_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2)
-        self.cycle_vent_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2)
-
-        self.data_live_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2)
+        # self.oxidizer_nogo_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
 
         self.fuel_press_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
         self.fuel_vent_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
@@ -577,22 +553,12 @@ class FuelScreen:
         # self.lox_fill_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth)
 
         self.fire_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2 - 1)
-        self.engine_start_up_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2 - 1)
 
 
     def draw_buttons(self):
         #Draw the buttons based on their current state
         self.canvas1.create_window(self.width/2 + self.width/4, 180, window=self.fuel_nogo_button)
-        self.canvas1.create_window(self.width/2 - self.width/4, 180, window=self.oxidizer_nogo_button)
-        self.canvas1.create_window(self.width/2, 180, window=self.command_nogo_button)
-
-        self.canvas1.create_window(self.width/2, 120, window=self.nanny_button)
-
-        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*0, window=self.sensor_stop_button)
-        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*2, window=self.cycle_valves_button)
-        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*3, window=self.cycle_vent_button)
-
-        self.canvas1.create_window(self.width/2 + self.width/4 - 100, self.startingHeight + self.heightSpacing*0, window=self.data_live_button)
+        # self.canvas1.create_window(self.width/2 - self.width/4, 180, window=self.oxidizer_nogo_button)
 
         # self.canvas1.create_window(self.width/2 + 120, self.startingHeight + self.heightSpacing*0, window=self.lox_press_button)
         # self.canvas1.create_window(self.width/2 + 120, self.startingHeight + self.heightSpacing*1, window=self.lox_vent_button)
@@ -601,21 +567,21 @@ class FuelScreen:
         # self.canvas1.create_window(self.width/2 + 120, self.startingHeight + self.heightSpacing*4, window=self.lox_main_button)
         # self.canvas1.create_window(self.width/2 + 120, self.startingHeight + self.heightSpacing*5, window=self.lox_fill_button)
 
-        self.canvas1.create_window(self.width/2 - 120, self.startingHeight + self.heightSpacing*0, window=self.fuel_press_button)
-        self.canvas1.create_window(self.width/2 - 120, self.startingHeight + self.heightSpacing*1, window=self.fuel_vent_button)
-        self.canvas1.create_window(self.width/2 - 120, self.startingHeight + self.heightSpacing*2, window=self.fuel_isolation_button)
-        self.canvas1.create_window(self.width/2 - 120, self.startingHeight + self.heightSpacing*3, window=self.fuel_purge_button)
-        self.canvas1.create_window(self.width/2 - 120, self.startingHeight + self.heightSpacing*4, window=self.fuel_main_button)
+        self.canvas1.create_window(self.width/2 - 0, self.startingHeight + self.heightSpacing*0, window=self.fuel_press_button)
+        self.canvas1.create_window(self.width/2 - 0, self.startingHeight + self.heightSpacing*1, window=self.fuel_vent_button)
+        self.canvas1.create_window(self.width/2 - 0, self.startingHeight + self.heightSpacing*2, window=self.fuel_isolation_button)
+        self.canvas1.create_window(self.width/2 - 0, self.startingHeight + self.heightSpacing*3, window=self.fuel_purge_button)
+        self.canvas1.create_window(self.width/2 - 0, self.startingHeight + self.heightSpacing*4, window=self.fuel_main_button)
 
-        self.canvas1.create_window(self.width/2 + self.width/4, self.startingHeight + self.heightSpacing*5, window=self.fire_button)
-        self.canvas1.create_window(self.width/2 + self.width/4, self.startingHeight + self.heightSpacing*6, window=self.engine_start_up_button)
+        self.canvas1.create_window(self.width/2 + self.width/3, self.startingHeight + 200 + self.heightSpacing*6, window=self.nanny_button)
+        self.canvas1.create_window(self.width/2 + self.width/3, self.startingHeight + 200 + self.heightSpacing*7, window=self.fire_button)
+        self.canvas1.create_window(self.width/2 + self.width/3, self.startingHeight + 200 + self.heightSpacing*8, window=self.abort_button)
 
-        self.canvas1.create_window(self.width/2 + self.width/4, self.startingHeight + self.heightSpacing*7, window=self.abort_button)
 
     # change button appearance after toggle
     def configure_buttons(self):
         global fuel_button_on
-        global oxidizer_button_on
+        # global oxidizer_button_on
         global command_button_on
 
         global fuel_press_on
@@ -623,60 +589,30 @@ class FuelScreen:
         global fuel_isolation_on
         global fuel_purge_on
         global fuel_main_on
-
-        global lox_press_on
-        global lox_vent_on
-        global lox_isolation_on
-        global lox_chill_on
-        global lox_main_on
+        # global lox_press_on
+        # global lox_vent_on
+        # global lox_isolation_on
+        # global lox_chill_on
+        # global lox_main_on
 
         global nanny_on
-        global sensor_stop_on
-        global cycle_valves_on
-        global cycle_vent_on
-        global data_live_on
         global fire_on
-        global engine_start_up_on
         global abort_on
+
         if fuel_nogo_on:
             self.fuel_nogo_button.configure(text=' FUEL \'GO\' ', bg='green2')
         else:
             self.fuel_nogo_button.configure(text=' FUEL \'NOGO\' ', bg='red')
 
-        if oxidizer_nogo_on:
-            self.oxidizer_nogo_button.configure(text=' OXIDIZER \'GO\' ', bg='green2')
-        else:
-            self.oxidizer_nogo_button.configure(text=' OXIDIZER \'NOGO\' ', bg='red')
-
-        if command_nogo_on:
-            self.command_nogo_button.configure(text=' COMMAND \'GO\' ', bg='green2')
-        else:
-            self.command_nogo_button.configure(text=' COMMAND \'NOGO\' ', bg='red')
+        # if oxidizer_nogo_on:
+        #     self.oxidizer_nogo_button.configure(text=' OXIDIZER \'GO\' ', bg='green2')
+        # else:
+        #     self.oxidizer_nogo_button.configure(text=' OXIDIZER \'NOGO\' ', bg='red')
 
         if nanny_on:
             self.nanny_button.configure(text='    Nanny \'ON\'    ', bg='yellow')
         else:
             self.nanny_button.configure(text='    Nanny \'OFF\'    ', bg='pink')
-
-        if sensor_stop_on:
-            self.sensor_stop_button.configure(bg='gray60')
-        else:
-            self.sensor_stop_button.configure(bg='gray80')
-
-        if cycle_valves_on:
-            self.cycle_valves_button.configure(text=' Cycle Valves ON ', bg='bisque')
-        else:
-            self.cycle_valves_button.configure(text=' Valve Seq OFF ', bg='gray80')
-
-        if cycle_vent_on:
-            self.cycle_vent_button.configure(text=' Cycle Vent ON ', bg='bisque')
-        else:
-            self.cycle_vent_button.configure(text=' Cycle Vent OFF ', bg='gray80')
-
-        if data_live_on:
-            self.data_live_button.configure(text=' DATA LIVE ', bg='SteelBlue1')
-        else:
-            self.data_live_button.configure(text=' DATA PAUSED ', bg='gray90')
 
         if fuel_press_on:
             self.fuel_press_button.configure(bg='green2')
@@ -738,11 +674,6 @@ class FuelScreen:
         else:
             self.fire_button.configure(text=' FIRE ', fg='white', bg='black')
 
-        if engine_start_up_on:
-            self.engine_start_up_button.configure(text=' Start Up Timing ON ', bg='bisque')
-        else:
-            self.engine_start_up_button.configure(text=' Engine Start Up ', bg='gray80')
-
         if abort_on:
             self.abort_button.configure(text='    ABORT TRIPPED    ', bg='yellow')
         else:
@@ -750,62 +681,59 @@ class FuelScreen:
 
         self.root.after(16, self.configure_buttons)
 
-
     def create_charts(self):
         # These are data values at the top of this function
         global i
         global k
-        figure7 = Figure(figsize=(4,3), dpi=plotDPI)
+        figure7 = Figure(figsize=(6,4), dpi=plotDPI)
         subplot7 = figure7.add_subplot(111)
-        x = np.linspace(0, 100, 200)
+        x = np.linspace(0, 100, 50)
         #print("i is ", i)
-        y = np.sin(2 * np.pi * x + k)
+        y = np.cos(2 * np.pi * x + k)
         subplot7.plot(x, y, color = 'lightsteelblue')
         #subplot4.title("Connected Scatterplot points with line")
         subplot7.set_xlabel("x")
         subplot7.set_ylabel("sinx")
         scatter1 = FigureCanvasTkAgg(figure7, self.root)
-        scatter1.get_tk_widget().place(x=700, y=550)
-        self.root.after(250, self.create_charts)
+        scatter1.get_tk_widget().place(x=100, y=50)
 
-    def create_charts2(self):
-        #Left side charts
-        x1 = self.x1
-        x2 = self.x2
-        x3 = self.x3
-        figure1 = Figure(figsize=(4,3), dpi=plotDPI)
-        subplot1 = figure1.add_subplot(111)
-        xAxis = [float(x1),float(x2),float(x3)]
-        yAxis = [float(x1),float(x2),float(x3)]
-        subplot1.bar(xAxis,yAxis, color = 'lightsteelblue')
-        bar1 = FigureCanvasTkAgg(figure1, self.root)
-        bar1.get_tk_widget().place(x=1300, y=50)
-
-        #self.create_charts()
+        w1 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300)
+        w1.set(19)
+        w1.place(x=100, y=550)
+        w2 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300)
+        w2.set(32)
+        w2.place(x=100, y=600)
+        w3 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300)
+        w3.set(57)
+        w3.place(x=100, y=650)
+        w4 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300)
+        w4.set(75)
+        w4.place(x=100, y=700)
+        #self.root.after(250, self.create_charts)
 
 
 bruh = MainScreen()
 bruh.initialize_configurations()
 bruh.create_charts2()
+bruh.root.after(100, bruh.configure_buttons())
 bruh.draw_buttons()
 
 oof = FuelScreen()
 oof.initialize_configurations()
-#oof.create_charts2()
+oof.create_charts()
+oof.root.after(100, oof.configure_buttons())
 oof.draw_buttons()
 
 #Continuously display the Screens
 #clear_output(wait=True)
 # bruh.configure_buttons()
 
-while True:
-    bruh.configure_buttons()
-    bruh.root.update()
-    bruh.root.after(100, bruh.configure_buttons())
 
-    oof.configure_buttons()
+while True:
+    bruh.root.update()
+
     #oof.root.after(1000, oof.create_charts)
-    oof.root.update()
+    #oof.root.update()
 
 #bruh.root.mainloop()
 #oof.root.mainloop()
