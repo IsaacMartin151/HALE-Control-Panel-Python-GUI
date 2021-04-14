@@ -13,11 +13,14 @@ from matplotlib.figure import Figure
 #x2 = float(entry2.get())
 #x3 = float(entry3.get())
 
-
+#iterators for graphs
 i = 1
 k = 0
-plotDPI = 60
-g_value=0
+
+plotDPI = 60 #used in spacing
+
+#for placeholder input values for dial
+g_value=0 
 x=0
 
 # Button states
@@ -231,51 +234,68 @@ class MainScreen:
 
         self.p1 = gaugelib.DrawGauge2(
             self.root,
-            max_value=70.0,
-            min_value=-30.0,
-            size=200,
-            bg_col='black',
-            unit = "Temp. °C",bg_sel = 2)
-        self.p1.place(x=0, y=50)
+            max_value = 1500.0,
+            min_value = 0.0,
+            size = 200,
+            bg_col = 'black',
+            unit = "PT-FU-310 (FUEL TANK)",bg_sel = 2)
+        self.p1.place(x=0, y=250)
+
         self.p2 = gaugelib.DrawGauge2(
             self.root,
-            max_value=100.0,
-            min_value= 0.0,
-            size=200,
-            bg_col='black',
-            unit = "Humid %",bg_sel = 2)
-        self.p2.place(x=0, y=250)
+            max_value = 3000.0,
+            min_value = 0.0,
+            size = 200,
+            bg_col = 'black',
+            unit = "PT-FU-120 (FUEL REGULATOR)",bg_sel = 2)
+        self.p2.place(x=220, y=250)
 
-        self.p3 = gaugelib.DrawGauge3(
+        self.p3 = gaugelib.DrawGauge2(
             self.root,
-            max_value=100.0,
+            max_value = 1500.0,
+            min_value = 0.0,
+            size = 200,
+            bg_col ='black',
+            unit = "PT-FU-320 (FUEL MAIN LINE)",bg_sel = 1)
+        self.p3.place(x=0, y=470)
+        
+        self.p4 = gaugelib.DrawGauge2(
+            self.root,
+            max_value= 3000.0,
             min_value= 0.0,
             size=200,
             bg_col='black',
-            unit = "Humid %",bg_sel = 1)
-        self.p3.place(x=0, y=450)
-        self.p4 = gaugelib.DrawGauge3(
+            unit = "PT-OX-130 (LOx REGULATOR)",bg_sel = 2)
+        self.p4.place(x=1090, y=250)
+
+        self.p5 = gaugelib.DrawGauge2(
             self.root,
-            max_value=100.0,
-            min_value= 0.0,
-            size=200,
-            bg_col='black',
-            unit = "Humid %",bg_sel = 2)
-        self.p4.place(x=1300, y=50)
+            max_value = 1500.0,
+            min_value = 0.0,
+            size = 200,
+            bg_col ='black',
+            unit = "PT-OX-210 (LOx TANK)",bg_sel = 2)
+        self.p5.place(x=1300, y=250)
+
+        self.p6 = gaugelib.DrawGauge2(
+            self.root,
+            max_value = 1500.0,
+            min_value = 0.0,
+            size = 200,
+            bg_col ='black',
+            unit = "PT-OX-220 (LOx MAIN LINE)",bg_sel = 2)
+        self.p6.place(x=1300, y=470)
+
 
         self.read_every_second()
 
 
     def read_every_second(self):
         global x
-        g_value=random.randint(-30,70)
-        self.p1.set_value(int(g_value))
-        g_value=random.randint(0,100)
-        self.p2.set_value(int(g_value))
-        g_value=random.randint(0,100)
-        self.p3.set_value(int(g_value))
-        g_value=random.randint(0,100)
-        self.p4.set_value(int(g_value))
+        self.p1.set_value(0)
+        self.p2.set_value(0)
+        self.p3.set_value(0)
+        self.p4.set_value(0)
         x+=1
         if x>100:
             #        graph1.draw_axes()
