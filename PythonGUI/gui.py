@@ -1,7 +1,10 @@
 import tkinter as tk
 import numpy as np
+import random
+import gaugelib
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+
 
 #import matplotlib.animation as anim
 #from IPython.display import clear_output
@@ -10,9 +13,12 @@ from matplotlib.figure import Figure
 #x2 = float(entry2.get())
 #x3 = float(entry3.get())
 
+
 i = 1
 k = 0
 plotDPI = 60
+g_value=0
+x=0
 
 # Button states
 global fuel_button_on
@@ -222,6 +228,60 @@ class MainScreen:
         self.subplot7.set_ylabel("sinx")
         self.scatter1 = FigureCanvasTkAgg(self.figure7, self.root)
         self.scatter1.get_tk_widget().place(x=700, y=550)
+
+        self.p1 = gaugelib.DrawGauge2(
+            self.root,
+            max_value=70.0,
+            min_value=-30.0,
+            size=200,
+            bg_col='black',
+            unit = "Temp. °C",bg_sel = 2)
+        self.p1.place(x=0, y=50)
+        self.p2 = gaugelib.DrawGauge2(
+            self.root,
+            max_value=100.0,
+            min_value= 0.0,
+            size=200,
+            bg_col='black',
+            unit = "Humid %",bg_sel = 2)
+        self.p2.place(x=0, y=250)
+
+        self.p3 = gaugelib.DrawGauge3(
+            self.root,
+            max_value=100.0,
+            min_value= 0.0,
+            size=200,
+            bg_col='black',
+            unit = "Humid %",bg_sel = 1)
+        self.p3.place(x=0, y=450)
+        self.p4 = gaugelib.DrawGauge3(
+            self.root,
+            max_value=100.0,
+            min_value= 0.0,
+            size=200,
+            bg_col='black',
+            unit = "Humid %",bg_sel = 2)
+        self.p4.place(x=1300, y=50)
+
+        self.read_every_second()
+
+
+    def read_every_second(self):
+        global x
+        g_value=random.randint(-30,70)
+        self.p1.set_value(int(g_value))
+        g_value=random.randint(0,100)
+        self.p2.set_value(int(g_value))
+        g_value=random.randint(0,100)
+        self.p3.set_value(int(g_value))
+        g_value=random.randint(0,100)
+        self.p4.set_value(int(g_value))
+        x+=1
+        if x>100:
+            #        graph1.draw_axes()
+            x=0
+        self.root.after(100, self.read_every_second)
+
 
 
     #set uniform sizes for buttons that don't have unique sizes
@@ -714,7 +774,7 @@ class FuelScreen:
 
 bruh = MainScreen()
 bruh.initialize_configurations()
-bruh.create_charts2()
+#bruh.create_charts2()
 bruh.root.after(100, bruh.configure_buttons())
 bruh.draw_buttons()
 
