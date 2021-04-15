@@ -110,7 +110,7 @@ class DrawGauge2(ini):
         label = self.unit
         #self.canvas.create_text(self.size/2,2*self.size/5, font=("Arial",int(self.size/20)),fill="white", text=label,angle=0)
         #label = 'Label'
-        self.canvas.create_text(self.size/2, -10, font=("Arial",int(self.size/18),'bold'),fill="light blue", text=label,angle=0)
+        self.canvas.create_text(self.size/2, self.size+10, font=("Arial",int(self.size/18),'bold'),fill="light blue", text=label,angle=0)
         self.readout = self.canvas.create_text(self.size/2,4*self.size/5, font=("Arial",int(self.size/18),'bold'),fill="white", text='')
         inner_tick_radius2 = int((self.size-self.size/9) * 0.48)
         outer_tick_radius2 = int((self.size-self.size/9) * 0.50)
