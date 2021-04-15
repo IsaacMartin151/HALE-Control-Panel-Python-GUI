@@ -490,7 +490,7 @@ class MainScreen:
         #self.figure7.draw()
         self.scatter1 = FigureCanvasTkAgg(self.figure7, self.root)
         self.scatter1.get_tk_widget().place(x=700, y=550)
-        self.root.after(100, self.create_charts)
+        #self.root.after(100, self.create_charts)
 
     def create_charts2(self):
         #Left side charts
