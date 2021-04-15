@@ -256,7 +256,7 @@ class MainScreen:
             min_value = 0.0,
             size = 200,
             bg_col ='black',
-            unit = "PT-FU-320 (FUEL MAIN LINE)",bg_sel = 1)
+            unit = "PT-FU-320 (FUEL MAIN LINE)",bg_sel = 2)
         self.p3.place(x=0, y=470)
         
         self.p4 = gaugelib.DrawGauge2(
@@ -338,10 +338,10 @@ class MainScreen:
         self.canvas1.create_window(self.width/2, 180, window=self.command_nogo_button)
         self.canvas1.create_window(self.width/2, 120, window=self.nanny_button)
 
-        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*0, window=self.sensor_stop_button)
-        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*2, window=self.cycle_valves_button)
-        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*3, window=self.cycle_vent_button)
-        self.canvas1.create_window(self.width/2 + self.width/4 - 100, self.startingHeight + self.heightSpacing*0, window=self.data_live_button)
+        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*3, window=self.sensor_stop_button)
+        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*5, window=self.cycle_valves_button)
+        self.canvas1.create_window(self.width/2 - self.width/4, self.startingHeight + self.heightSpacing*6, window=self.cycle_vent_button)
+        self.canvas1.create_window(self.width/2 + self.width/4 - 100, self.startingHeight + self.heightSpacing*3, window=self.data_live_button)
 
         self.canvas1.create_window(self.width/2 + 120, self.startingHeight + self.heightSpacing*0, window=self.lox_press_button)
         self.canvas1.create_window(self.width/2 + 120, self.startingHeight + self.heightSpacing*1, window=self.lox_vent_button)
