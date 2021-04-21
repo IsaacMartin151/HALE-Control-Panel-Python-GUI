@@ -2,6 +2,7 @@ import tkinter as tk
 import numpy as np
 import random
 import gaugelib
+import time
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
@@ -22,6 +23,7 @@ plotDPI = 60 #used in spacing
 #for placeholder input values for dial
 g_value=0 
 x=0
+
 
 # Button states
 global fuel_button_on
@@ -224,13 +226,22 @@ class MainScreen:
         self.engine_start_up_button = tk.Button(self.root, text=' Engine Start Up ', command=engine_start_up_toggle, bg='gray80', font=('Arial', 10))
         self.abort_button           = tk.Button(self.root, text='    ABORT    ', command=abort_toggle, bg='red', font=('Arial', 11))
 
+        self.scrollbar = tk.Scrollbar(self.root)
+        self.scrollbar.pack(side = tk.LEFT, fill = tk.BOTH)
+        self.mylist = tk.Listbox(self.root, yscrollcommand = self.scrollbar.set)
+
+        for line in range(50):
+           t = time.localtime()
+           current_time = time.strftime("%H:%M:%S", t)
+           #print(current_time)
+           self.mylist.insert(tk.END, current_time + 'This is line number' + str(line))
+        
+        self.mylist.place(x=50, y=50 )
+        self.scrollbar.config( command = self.mylist.yview )
+        #mainloop()
+
         #Charts for this screen
-        self.figure7 = Figure(figsize=(4,3), dpi=plotDPI)
-        self.subplot7 = self.figure7.add_subplot(111)
-        self.subplot7.set_xlabel("x")
-        self.subplot7.set_ylabel("sinx")
-        self.scatter1 = FigureCanvasTkAgg(self.figure7, self.root)
-        self.scatter1.get_tk_widget().place(x=700, y=550)
+        
 
         self.p1 = gaugelib.DrawGauge2(
             self.root,
