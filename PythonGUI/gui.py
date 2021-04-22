@@ -6,19 +6,15 @@ import time
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
+# Main screen starts at line 173 
+# Fuel screen starts at line 579 
+# Ox   screen starts at line 820
 
-#import matplotlib.animation as anim
-#from IPython.display import clear_output
-
-#x1 = float(entry1.get())
-#x2 = float(entry2.get())
-#x3 = float(entry3.get())
-
-#iterators for graphs
+#iterators for graphs/dummy data, replace with time values when DAQ is hooked up
 i = 1
 k = 0
 
-plotDPI = 60 #used in spacing
+plotDPI = 60 #used for spacing
 
 #for placeholder input values for dial
 g_value=0 
@@ -77,7 +73,8 @@ fire_on = False
 engine_start_up_on = False
 abort_on = False
 
-
+# Each of these functions are called when their corresponding button is pressed. 
+# Right now it just toggles them on/off and their color is updated accordingly
 def command_nogo_toggle():
     global command_nogo_on
     command_nogo_on = not command_nogo_on
@@ -168,6 +165,7 @@ def abort_toggle():
     global abort_on
     abort_on = not abort_on
 
+# Code for the Main Control Screen
 class MainScreen:
     def __init__(self):
         #Setting variables for the GUI's main display
@@ -179,6 +177,8 @@ class MainScreen:
         self.startingHeight = 350
         self.heightSpacing = 40
 
+        self.timesDisplayed = 0
+
         #Dummy data
         self.x1 = 10
         self.x2 = 13
@@ -186,14 +186,19 @@ class MainScreen:
 
         self.root = tk.Tk()
         self.canvas1 = tk.Canvas(self.root, width = self.width, height = self.height)
-        self.background_image = tk.PhotoImage(file = "./background.png")
-        self.background_label = tk.Label(self.root, image=self.background_image)
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
         self.canvas1.pack()
+
+        self.background_image = tk.PhotoImage(file = "./background.png", width=self.width, height=self.height)
+        self.background_label = tk.Label(self.root, image=self.background_image)
+        self.background_label.place(x=0, y=0, width=self.width, height=self.height)
+        
 
         self.label1 = tk.Label(self.root, text='Control Panel')
         self.label1.config(font=('Arial', 20))
+        self.rateLabel = tk.Label(self.root, text='Times Displayed: 0, Avg refresh time: 99999')
+        self.rateLabel.config(font=('Arial', 12))
         self.canvas1.create_window(self.width/2, 50, window=self.label1)
+        self.canvas1.create_window(self.width/4*3, 50, window=self.rateLabel)
 
         # Creating the data for the top three buttons
         self.fuel_nogo_button     = tk.Button(self.root, text=' FUEL \'NOGO\' ', command=fuel_nogo_toggle, bg='red', font=('Arial', 11))
@@ -226,26 +231,20 @@ class MainScreen:
         self.engine_start_up_button = tk.Button(self.root, text=' Engine Start Up ', command=engine_start_up_toggle, bg='gray80', font=('Arial', 10))
         self.abort_button           = tk.Button(self.root, text='    ABORT    ', command=abort_toggle, bg='red', font=('Arial', 11))
 
-        self.scrollbar = tk.Scrollbar(self.root)
-        self.scrollbar.place(x=0, y=0)
-        self.mylist = tk.Listbox(self.root, yscrollcommand = self.scrollbar.set, width=150)
+        self.mylist = tk.Listbox(self.root, width=100)
         global k
         for line in range(50):
            k += 1
            t = time.localtime()
            current_time = time.strftime("%H:%M:%S", t)
            #print(current_time)
-           self.mylist.insert(tk.END, current_time + "  " + str(line) + ' This is line number' + str(line))
+           self.mylist.insert(0, current_time + "  " + str(line) + ' Filler text, status update stuff, etc' + str(line))
            if (line % 5 == 0):
-              self.mylist.itemconfig(line, foreground = "red")
+              self.mylist.itemconfig(0, bg = "red")
         
-        self.mylist.place(x=self.width/2 - self.width/4, y=self.height-300 )
-        self.scrollbar.config( command = self.mylist.yview )
-        #mainloop()
+        self.mylist.place(x=self.width/2 - 300, y=self.height-300 )
 
-        #Charts for this screen
-        
-
+        #Dials for this screen
         self.p1 = gaugelib.DrawGauge2(
             self.root,
             max_value = 1500.0,
@@ -299,6 +298,7 @@ class MainScreen:
             bg_col ='black',
             unit = "PT-OX-220 (LOx MAIN LINE)",bg_sel = 2)
         self.p6.place(x=1300, y=470)
+        self.timeStarted = time.time()
 
 
         self.read_every_second()
@@ -345,8 +345,8 @@ class MainScreen:
         self.engine_start_up_button.config(height=self.standardizedButtonHeight, width=self.standardizedButtonWidth//2 - 1)
 
 
+    #Draw the buttons based on their current state
     def draw_buttons(self):
-        #Draw the buttons based on their current state
         self.canvas1.create_window(self.width/2 + self.width/4, 180, window=self.fuel_nogo_button)
         self.canvas1.create_window(self.width/2 - self.width/4, 180, window=self.oxidizer_nogo_button)
         self.canvas1.create_window(self.width/2, 180, window=self.command_nogo_button)
@@ -485,6 +485,11 @@ class MainScreen:
         else:
             self.abort_button.configure(text='    ABORT    ', bg='red')
 
+        self.timesDisplayed += 1
+
+        #self.rateLabel = tk.Label(self.root, text='Times Displayed: 0, Avg refresh time: 99999')
+        self.rateLabel.config(text="Times Displayed: "+str(self.timesDisplayed)+", Avg refresh time: "+str((time.time()-self.timeStarted)/self.timesDisplayed))
+
         self.root.after(16, self.configure_buttons)
 
 
@@ -595,7 +600,8 @@ class FuelScreen:
 
         self.root = tk.Toplevel()
         self.canvas1 = tk.Canvas(self.root, width = self.width, height = self.height)
-        self.background_image = tk.PhotoImage(file = "./background2.png")
+        self.background_image = tk.PhotoImage(file = "./backgroundrocketred.png")
+        # Original artwork courtesy of u/wallpaper_master on HeroScreen
         self.background_label = tk.Label(self.root, image=self.background_image)
         self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
         self.canvas1.pack()
@@ -784,25 +790,37 @@ class FuelScreen:
         x = np.linspace(0, 100, 50)
         #print("i is ", i)
         y = np.cos(2 * np.pi * x + k)
-        subplot7.plot(x, y, color = 'lightsteelblue')
+        subplot7.plot(x, y, color = 'lightsteelblue', label="Pressure 1")
+        x = np.linspace(0, 100, 50)
+        #print("i is ", i)
+        y = np.sin(2 * np.pi * x + k)
+        subplot7.plot(x, y, color = 'orange', label="Pressure 2")
         #subplot4.title("Connected Scatterplot points with line")
-        subplot7.set_xlabel("x")
-        subplot7.set_ylabel("sinx")
+        subplot7.set_xlabel("Time")
+        subplot7.set_ylabel("Pressure")
+        subplot7.legend()
         scatter1 = FigureCanvasTkAgg(figure7, self.root)
         scatter1.get_tk_widget().place(x=100, y=50)
 
-        w1 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300)
+        w1 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300, label="Fuel Tank Relief Temp", width=10, bg="#fcb603")
         w1.set(19)
-        w1.place(x=100, y=550)
-        w2 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300)
+        w1.place(x=100, y=450)
+        w2 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300, label="Fuel Main Line Temp", width=10, bg="#fcb603")
         w2.set(32)
-        w2.place(x=100, y=600)
-        w3 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300)
+        w2.place(x=100, y=500)
+        w3 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300, label="Fuel Venturi Temp", width=10, bg="#fcb603")
         w3.set(57)
-        w3.place(x=100, y=650)
-        w4 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300)
+        w3.place(x=100, y=550)
+        w4 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300, label="Fuel Main Valve Temp", width=10, bg="#fcb603")
         w4.set(75)
-        w4.place(x=100, y=700)
+        w4.place(x=100, y=600)
+        # Chill Relief is only for OX
+        #w5 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300, label="Fuel Chill Relief Temp", width=10, bg="#fcb603")
+        #w5.set(75)
+        #w5.place(x=100, y=650)
+        w6 = tk.Scale(self.root, from_=0, to=120, orient=tk.HORIZONTAL, length=300, label="Fuel Chill Line Temp", width=10, bg="#fcb603")
+        w6.set(75)
+        w6.place(x=100, y=650)
         #self.root.after(250, self.create_charts)
 
 
