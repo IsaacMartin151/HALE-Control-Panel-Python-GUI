@@ -227,16 +227,19 @@ class MainScreen:
         self.abort_button           = tk.Button(self.root, text='    ABORT    ', command=abort_toggle, bg='red', font=('Arial', 11))
 
         self.scrollbar = tk.Scrollbar(self.root)
-        self.scrollbar.pack(side = tk.LEFT, fill = tk.BOTH)
-        self.mylist = tk.Listbox(self.root, yscrollcommand = self.scrollbar.set)
-
+        self.scrollbar.place(x=0, y=0)
+        self.mylist = tk.Listbox(self.root, yscrollcommand = self.scrollbar.set, width=150)
+        global k
         for line in range(50):
+           k += 1
            t = time.localtime()
            current_time = time.strftime("%H:%M:%S", t)
            #print(current_time)
-           self.mylist.insert(tk.END, current_time + 'This is line number' + str(line))
+           self.mylist.insert(tk.END, current_time + "  " + str(line) + ' This is line number' + str(line))
+           if (line % 5 == 0):
+              self.mylist.itemconfig(line, foreground = "red")
         
-        self.mylist.place(x=50, y=50 )
+        self.mylist.place(x=self.width/2 - self.width/4, y=self.height-300 )
         self.scrollbar.config( command = self.mylist.yview )
         #mainloop()
 
