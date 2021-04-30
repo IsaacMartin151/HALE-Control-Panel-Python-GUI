@@ -2,7 +2,7 @@ import tkinter as tk
 import numpy as np
 import random
 import gaugelib
-import time
+import time 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
