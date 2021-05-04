@@ -6,7 +6,7 @@ import enums
 
 class ToggleButton(element.Element):
 
-    def __init__(self, *, on_toggleon=None, on_toggleoff=None, off_text="OFF", on_text="ON", font="Arial Bold", font_size=24, off_text_color="white", off_bgcolor="ff0000", on_text_color="white", on_bgcolor="#339933", starting_state=enums.ToggleStates.OFF,  **kwargs):
+    def __init__(self, *, on_toggleon=None, on_toggleoff=None, off_text="OFF", on_text="ON", font="Arial Bold", font_size=24, off_text_color="white", off_bgcolor="#ff0000", on_text_color="white", on_bgcolor="#339933", starting_state=enums.ToggleStates.OFF,  **kwargs):
         self.state = starting_state
 
         self.on_text = on_text

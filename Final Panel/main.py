@@ -58,18 +58,18 @@ main_panel.add_element(HALE.ToggleButton(off_text="NANNY MODE OFF", on_text = "N
 #center
 main_panel.add_element(HALE.Rectangle(color="#b3b3b3", z = HALE.Depths.BACKGROUND, pos_x = 270, pos_y = 180, size_x = 470, size_y = 640))
 
-main_panel.add_element(HALE.ToggleButton(text="ABV-PR-120 (FUEL PRESS)", font_size=12, pos_x=334, pos_y=308, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-FU-310 (FUEL VENT)", font_size=12, pos_x=334, pos_y=394, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-FU-320 (FUEL ISO)", font_size=12, pos_x=334, pos_y=482, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-FU-330 (FUEL PURGE)", font_size=12, pos_x=334, pos_y=560, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-FU-340 (FUEL MAIN)", font_size=12, pos_x=334, pos_y=641, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-PR-120 (FUEL PRESS)", font_size=12, pos_x=334, pos_y=308, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-FU-310 (FUEL VENT)", font_size=12, pos_x=334, pos_y=394, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-FU-320 (FUEL ISO)", font_size=12, pos_x=334, pos_y=482, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-FU-330 (FUEL PURGE)", font_size=12, pos_x=334, pos_y=560, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-FU-340 (FUEL MAIN)", font_size=12, pos_x=334, pos_y=641, size_x=166, size_y=48))
 
-main_panel.add_element(HALE.ToggleButton(text="ABV-PR-110 (OX PRESS)", font_size=12, pos_x=516, pos_y=308, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-OX-120 (OX VENT)", font_size=12, pos_x=516, pos_y=394, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-OX-120 (OX ISO)", font_size=12, pos_x=516, pos_y=482, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-OX-120 (OX CHILL)", font_size=12, pos_x=516, pos_y=560, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-OX-120 (OX MAIN)", font_size=12, pos_x=516, pos_y=641, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(text="ABV-OX-120 (OX FILL)", font_size=12, pos_x=516, pos_y=724, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-PR-110 (OX PRESS)", font_size=12, pos_x=516, pos_y=308, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX VENT)", font_size=12, pos_x=516, pos_y=394, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX ISO)", font_size=12, pos_x=516, pos_y=482, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX CHILL)", font_size=12, pos_x=516, pos_y=560, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX MAIN)", font_size=12, pos_x=516, pos_y=641, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX FILL)", font_size=12, pos_x=516, pos_y=724, size_x=166, size_y=48))
 
 
 
