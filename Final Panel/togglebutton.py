@@ -28,12 +28,12 @@ class ToggleButton(element.Element):
             self.state = enums.ToggleStates.ON
             self.b.configure(fg =self.on_text_color, bg=self.on_bgcolor, text=self.on_text)
             if(self.on_toggleon):
-                self.on_toggleon
+                self.on_toggleon()
         else:
             self.state = enums.ToggleStates.OFF
             self.b.configure(fg =self.off_text_color, bg=self.off_bgcolor, text=self.off_text)
             if(self.on_toggleoff):
-                self.on_toggleoff
+                self.on_toggleoff()
 
     def display_content(self):
         text_font = tkFont.Font(family = self.font, size=self.font_size)
