@@ -5,9 +5,11 @@ import HALE
 
 client = HALE.Interface()
 
-main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 900))
+main_panel = client.add_panel(HALE.Panel(size_x = 1920, size_y = 1080))
+second_panel = client.add_panel(HALE.Panel(size_x = 1920, size_y = 1080))
 
 #top
+second_panel.add_element(HALE.PushButton(text="Second Panel", text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 0, pos_y = 0, size_x = 540, size_y = 500))
 main_panel.add_element(HALE.PushButton(text="WATER SUPPRESSION", text_color="black", bgcolor = "#DDDDDD", font_size= 12, pos_x = 430, pos_y = 20, size_x = 140, size_y = 50))
 main_panel.add_element(HALE.ToggleButton(off_text="FUEL NOGO", on_text = "FUEL GO", font_size= 16, pos_x = 280, pos_y = 110, size_x = 135, size_y = 60))
 main_panel.add_element(HALE.ToggleButton(off_text="COMMAND NOGO", on_text = "COMMAND GO", font_size= 16, pos_x = 425, pos_y = 110, size_x = 180, size_y = 60))

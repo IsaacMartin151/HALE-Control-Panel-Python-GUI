@@ -1,7 +1,9 @@
 import tkinter as tk
 import panel
 class Interface:
-    panels = []
+    
+    def __init__(self):
+        self.panels = []
 
     def display(self):
         if(len(self.panels) == 0):

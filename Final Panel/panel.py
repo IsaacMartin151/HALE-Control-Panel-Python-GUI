@@ -8,8 +8,7 @@ import random
 import enums
 
 class Panel:
-    elements = []
-    root = None
+
 
     def add_element(self, e):
         self.elements.append(e)
@@ -28,7 +27,6 @@ class Panel:
     def display(self):
         self.init_window()
         self.elements.sort(key= lambda x : x.z)
-        print(self.elements)
         for element in self.elements:
             element.set_panel_info(self.root, self.bgcolor, self.size_x, self.size_y)
             element.display()
@@ -42,6 +40,8 @@ class Panel:
         self.size_y = size_y
         self.pos_x = pos_x
         self.pos_y = pos_y
+        self.elements = []
+        self.root = None
         self.bgcolor = bgcolor
         self.init_window()
         self.display()
