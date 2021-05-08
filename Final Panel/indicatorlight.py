@@ -15,9 +15,7 @@ class IndicatorLight(element.Element):
     def display_content(self):
         title = tk.Label(self.containing_frame, text=self.text, fg=self.text_color, bg=self.panel_bgcolor, font=("Arial", 12))
 
-
         canvas_padding = 24
-
 
         self.c = tk.Canvas(self.containing_frame, width=self.abs_size_x, height=self.abs_size_y-canvas_padding, bg=self.panel_bgcolor, bd=0, highlightthickness=0, relief='ridge')
         title.pack(side = tk.TOP)

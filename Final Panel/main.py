@@ -1,15 +1,29 @@
 # Import Required Module
 import tkinter as tk
+import numpy as np
 import random
 import HALE
 
 client = HALE.Interface()
 
-main_panel = client.add_panel(HALE.Panel(size_x = 1920, size_y = 1080))
-second_panel = client.add_panel(HALE.Panel(size_x = 1920, size_y = 1080))
+main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
+engine_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
+
+
+#logging box
+log_box = main_panel.add_element(HALE.LoggingBox(pos_x = 0, pos_y = 800, size_x = 200, size_y = 100))
+
+tank_temps = engine_panel.add_element(HALE.Chart(pos_x = 0, pos_y = 0, size_x = 300, size_y = 400, title="Tank Temps", xlabel="Time", ylabel="Pressure"))
+chamber_pressures = engine_panel.add_element(HALE.Chart(pos_x = 650, pos_y = 0, size_x = 300, size_y = 400, title="Chamber Pressures", xlabel="Time", ylabel="Amplitude"))
+thrust_pressure = engine_panel.add_element(HALE.Chart(pos_x = 120, pos_y = 600, size_x = 700, size_y = 350, title="Pressures(psi) - Thrust (lbf)", xlabel="Time", ylabel="Thrust - Pressure"))
+
+engine_panel.add_element(HALE.IndicatorLight(text="Ox Main Valve", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 20, pos_y = 640, size_x = 100, size_y = 50, refresh_interval = 50))
+engine_panel.add_element(HALE.IndicatorLight(text="Fuel Main Valve", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF00FF" ), pos_x = 20, pos_y = 740, size_x = 100, size_y = 50, refresh_interval = 50))
+
 
 #top
-second_panel.add_element(HALE.PushButton(text="Second Panel", text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 0, pos_y = 0, size_x = 540, size_y = 500))
+engine_panel.add_element(HALE.PushButton(text="Second Panel", onclick = lambda : (log_box.add_message(text="Second panel label clicked", color="Red")), text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 1500, pos_y = 700, size_x = 100, size_y = 100))
+
 main_panel.add_element(HALE.PushButton(text="WATER SUPPRESSION", text_color="black", bgcolor = "#DDDDDD", font_size= 12, pos_x = 430, pos_y = 20, size_x = 140, size_y = 50))
 main_panel.add_element(HALE.ToggleButton(off_text="FUEL NOGO", on_text = "FUEL GO", font_size= 16, pos_x = 280, pos_y = 110, size_x = 135, size_y = 60))
 main_panel.add_element(HALE.ToggleButton(off_text="COMMAND NOGO", on_text = "COMMAND GO", font_size= 16, pos_x = 425, pos_y = 110, size_x = 180, size_y = 60))
@@ -83,11 +97,47 @@ main_panel.add_element(HALE.PushButton(text="ABORT", text_color="white", bgcolor
 main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(1)], pos_x = 85, pos_y = 180, size_x = 75, size_y = 75, refresh_interval = 500))
 
 
+#Adding dummy data to the charts on the engine panel so it looks nice, also to show how to update data
+
+#Tank temps dummy data
+x = np.linspace(0, 100, 50)
+y = np.sin(2 * np.pi * x)
+tank_temps.add_info(x, y, "#82e2ff", "TC-OX-220")
+y = np.sin(2 * np.pi * x + .3)
+tank_temps.add_info(x, y, "#53a0b8", "TC-OX-221")
+y = np.sin(2 * np.pi * x + .6)
+tank_temps.add_info(x, y, "#377e94", "TC-OX-222")
+y = np.sin(2 * np.pi * x + .9)
+tank_temps.add_info(x, y, "#185669", "TC-OX-223")
+
+y = np.sin(2 * np.pi * x + 1.2)
+tank_temps.add_info(x, y, "#fa3e3e", "TC-FU-320")
+y = np.sin(2 * np.pi * x + 1.5)
+tank_temps.add_info(x, y, "#bf3030", "TC-CC-410")
+y = np.sin(2 * np.pi * x + 1.8)
+tank_temps.add_info(x, y, "#8f1313", "TC-CC-411")
+y = np.sin(2 * np.pi * x + 2.1)
+tank_temps.add_info(x, y, "#690606", "TC-CC-412")
+
+#Chamber pressures dummy data
+y = np.sin(2 * np.pi * x) * 510
+chamber_pressures.add_info(x, y, "#bf3030", "PT-CC-410")
+y = np.sin(2 * np.pi * x + 1.3) * 510
+chamber_pressures.add_info(x, y, "#8f1313", "PT-CC-420")
+
+#Thrust-Pressure dummy data
+y = np.sin(2 * np.pi * x) * 2150
+thrust_pressure.add_info(x, y, "#bf3030", "Thrust")
+
+
+get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" )
+
 client.display()
 
-        #self.elements.append(pushbutton.PushButton(text="Bruh", anchor=enums.AnchorPoints.BOTTOMRIGHT, size_x = 600, size_y = 600, pos_x = 600, pos_y = 600))
-        #self.elements.append(togglebutton.ToggleButton( anchor=enums.AnchorPoints.BOTTOMLEFT, size_x = 600, size_y = 600, pos_x = 600, pos_y = 600))
-        
 
-        #self.elements.append(rectangle.Rectangle(z = enums.Depths.FOREGROUND, color="#222222",  anchor=enums.AnchorPoints.CENTER, size_x = 100, size_y = 100, pos_x = 850, pos_y = 850, refresh_interval = 200))
-        #self.elements.append(indicatorlight.IndicatorLight(get_data = lambda : ("green" if random.randint(0, 5) < 3 else "red" ) ,   anchor=enums.AnchorPoints.CENTER, size_x = 200, size_y = 200, pos_x = 800, pos_y = 800, refresh_interval = 200))        
+
+#self.elements.append(pushbutton.PushButton(text="Bruh", anchor=enums.AnchorPoints.BOTTOMRIGHT, size_x = 600, size_y = 600, pos_x = 600, pos_y = 600))
+#self.elements.append(togglebutton.ToggleButton( anchor=enums.AnchorPoints.BOTTOMLEFT, size_x = 600, size_y = 600, pos_x = 600, pos_y = 600))
+         
+#self.elements.append(rectangle.Rectangle(z = enums.Depths.FOREGROUND, color="#222222",  anchor=enums.AnchorPoints.CENTER, size_x = 100, size_y = 100, pos_x = 850, pos_y = 850, refresh_interval = 200))
+#self.elements.append(indicatorlight.IndicatorLight(get_data = lambda : ("green" if random.randint(0, 5) < 3 else "red" ) ,   anchor=enums.AnchorPoints.CENTER, size_x = 200, size_y = 200, pos_x = 800, pos_y = 800, refresh_interval = 200))        

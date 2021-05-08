@@ -5,9 +5,6 @@ import enums
 
 
 class Element:
-        
-        
-        
         def clip_abs_x (self, x):
             return int(((x/1000)*self.panel_size_x))
 
@@ -52,8 +49,6 @@ class Element:
 
 
             self.calculate_positions(self.size_x, self.size_y, self.pos_x, self.pos_y, self.anchor)
-
-
 
             self.containing_frame = tk.Frame(self.panel_root, bg=self.panel_bgcolor, width=self.abs_size_x, height=self.abs_size_y)
             self.containing_frame.place(x=self.abs_pos_x, y=self.abs_pos_y)

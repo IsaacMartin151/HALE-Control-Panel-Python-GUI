@@ -8,8 +8,6 @@ import random
 import enums
 
 class Panel:
-
-
     def add_element(self, e):
         self.elements.append(e)
         self.display()
