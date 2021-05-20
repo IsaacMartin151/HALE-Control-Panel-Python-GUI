@@ -18,7 +18,7 @@ class Panel:
             for widget in self.root.winfo_children():
                 widget.destroy()
         else:
-            self.root = tk.Tk()
+            self.root = tk.Toplevel()
             self.root.geometry(str(self.size_x) + "x" + str(self.size_y) + "+" + str(self.pos_x) + "+" + str(self.pos_y))
             self.root.configure(bg = self.bgcolor)
 

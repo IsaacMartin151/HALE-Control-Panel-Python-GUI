@@ -14,10 +14,10 @@ indicator_panel = client.add_panel(HALE.Panel(size_x = 1900, size_y = 950))
 
 
 #Logos
-background_image = tk.PhotoImage(file = "./hale.png", width=465, height=215)
+#background_image = tk.PhotoImage(file = "./hale.png", width=465, height=215)
 #background_image2 = tk.PhotoImage(file = "./hale.png", width=100, height=60)
 #background_image3 = tk.PhotoImage(file = "./hale.png", width=100, height=60)
-main_panel.add_element(HALE.Image(pos_x = 400, pos_y = 200, size_x=200, size_y = 100, image=background_image))
+#main_panel.add_element(HALE.Image(pos_x = 400, pos_y = 200, size_x=200, size_y = 100, image=background_image))
 #engine_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, image=background_image))
 #indicator_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, image=background_image))
 
@@ -27,7 +27,7 @@ main_panel.add_element(HALE.Image(pos_x = 400, pos_y = 200, size_x=200, size_y =
 
 ########## INDICATOR PANEL #########
 
-IndicatorPanelBg = tk.PhotoImage(file="./IndicatorPanelBg", width=1900, height=950)
+IndicatorPanelBg = tk.PhotoImage(file="./IndicatorPanelBg.PNG", width=1900, height=950)
 indicator_panel.add_element(HALE.Image(pos_x=0, pos_y=0, image=IndicatorPanelBg))
 
 indicator_panel.add_element(HALE.IndicatorLight(text="Command", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
