@@ -9,20 +9,22 @@ client = HALE.Interface()
 
 main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 engine_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
-sensor_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
+indicator_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800, background_image=tk.PhotoImage(file="./IndicatorPanelBg.PNG")))
 
 
 
 #Logos
-background_image = tk.PhotoImage(file = "./hale.png", width=100, height=60)
-main_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, width=100, height=60, image=background_image))
-engine_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, width=100, height=60, image=background_image))
-sensor_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, width=100, height=60, image=background_image))
+background_image = tk.PhotoImage(file = "./hale.png", width=465, height=215)
+#background_image2 = tk.PhotoImage(file = "./hale.png", width=100, height=60)
+#background_image3 = tk.PhotoImage(file = "./hale.png", width=100, height=60)
+main_panel.add_element(HALE.Image(pos_x = 400, pos_y = 200, size_x=200, size_y = 100, image=background_image))
+#engine_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, image=background_image))
+#indicator_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, image=background_image))
 
-background_label3 = tk.Label(sensor_panel, image=background_image)
-background_label3.place(x=0, y=0, width=100, height=60)
+#background_label3 = tk.Label(sensor_panel, image=background_image)
+#background_label3.place(x=0, y=0, width=100, height=60)
 
-indicator_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800, background_image=tk.PhotoImage(file="./IndicatorPanelBg")))
+
 
 
 ########## INDICATOR PANEL #########
