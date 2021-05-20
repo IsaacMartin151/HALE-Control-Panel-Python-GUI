@@ -43,7 +43,7 @@ class Element:
         def update_loop(self):
             self.update()
             if (self.refresh_interval):
-                self.containing_frame.after(self.refresh_interval, self.update_loop);
+                self.containing_frame.after(self.refresh_interval, self.update_loop)
 
         def display(self):
 

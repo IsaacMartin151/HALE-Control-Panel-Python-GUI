@@ -35,6 +35,9 @@ class ToggleButton(element.Element):
             if(self.on_toggleoff):
                 self.on_toggleoff()
 
+    def get_state(self):
+        return self.state
+
     def display_content(self):
         text_font = tkFont.Font(family = self.font, size=self.font_size)
         if (self.state == enums.ToggleStates.OFF):

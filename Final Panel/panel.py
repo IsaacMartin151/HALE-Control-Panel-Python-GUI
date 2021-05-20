@@ -33,7 +33,7 @@ class Panel:
  
         # Open window having dimension 100x100
 
-    def __init__(self, *, size_x=1600, size_y=900, pos_x=0, pos_y=0, bgcolor = "#111111"):
+    def __init__(self, *, size_x=1600, size_y=900, pos_x=0, pos_y=0, bgcolor = "#000000"):
         self.size_x = size_x
         self.size_y = size_y
         self.pos_x = pos_x

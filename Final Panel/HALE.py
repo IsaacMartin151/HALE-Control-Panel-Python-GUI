@@ -9,4 +9,4 @@ from rectangle import *
 from image import *
 from loggingbox import *
 from chart import *
-
+from valveindicator import *
