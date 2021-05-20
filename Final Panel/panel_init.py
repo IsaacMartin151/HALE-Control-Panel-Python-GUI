@@ -9,7 +9,7 @@ client = HALE.Interface()
 
 main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 engine_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
-indicator_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800, bgcolor=None, background_image=tk.PhotoImage(file="./IndicatorPanelBg")))
+indicator_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800, bgcolor=None, background_image=tk.PhotoImage(file="./IndicatorPanelBg.PNG")))
 
 
 
