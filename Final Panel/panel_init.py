@@ -1,5 +1,6 @@
 # Import Required Module
 import tkinter as tk
+from typing import Sized
 import numpy as np
 import random
 import HALE
@@ -8,10 +9,33 @@ client = HALE.Interface()
 
 main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 engine_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
+indicator_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800, background_image=tk.PhotoImage(file="./IndicatorPanelBg")))
 
 
-#logging box
-log_box = main_panel.add_element(HALE.LoggingBox(pos_x = 0, pos_y = 800, size_x = 200, size_y = 100))
+########## INDICATOR PANEL #########
+
+indicator_panel.add_element(HALE.IndicatorLight(text="Command", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=44, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Ox", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=87, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Fuel", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=132, size_x=13, size_y=24, refresh_interval=1000))
+
+indicator_panel.add_element(HALE.IndicatorLight(text="WS", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=44, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Camera", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=87, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Office", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=132, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Record", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=176, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Igniter GO", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=219, size_x=13, size_y=24, refresh_interval=1000))
+
+indicator_panel.add_element(HALE.IndicatorLight(text="Nanny", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=44, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Sequence Flow Meter", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=132, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Cold Flow", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=219, size_x=13, size_y=24, refresh_interval=1000))
+
+indicator_panel.add_element(HALE.IndicatorLight(text="ABORT", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=44, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Igniter Armed", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=132, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Startup", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=219, size_x=13, size_y=24, refresh_interval=1000))
+
+
+########## ENGINE PANEL ###########
+
+engine_panel.add_element(HALE.PushButton(text="Second Panel", onclick = lambda : (log_box.add_message(text="Second panel label clicked", color="Red")), text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 1500, pos_y = 700, size_x = 100, size_y = 100))
 
 tank_temps = engine_panel.add_element(HALE.Chart(pos_x = 0, pos_y = 0, size_x = 300, size_y = 400, title="Tank Temps", xlabel="Time", ylabel="Pressure"))
 chamber_pressures = engine_panel.add_element(HALE.Chart(pos_x = 650, pos_y = 0, size_x = 300, size_y = 400, title="Chamber Pressures", xlabel="Time", ylabel="Amplitude"))
@@ -21,8 +45,14 @@ engine_panel.add_element(HALE.IndicatorLight(text="Ox Main Valve", starting_colo
 engine_panel.add_element(HALE.IndicatorLight(text="Fuel Main Valve", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF00FF" ), pos_x = 20, pos_y = 740, size_x = 100, size_y = 50, refresh_interval = 50))
 
 
+
+########## MAIN PANEL ###########
+
+#logging box
+log_box = main_panel.add_element(HALE.LoggingBox(pos_x = 0, pos_y = 800, size_x = 200, size_y = 100))
+
+
 #top
-engine_panel.add_element(HALE.PushButton(text="Second Panel", onclick = lambda : (log_box.add_message(text="Second panel label clicked", color="Red")), text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 1500, pos_y = 700, size_x = 100, size_y = 100))
 
 main_panel.add_element(HALE.PushButton(text="WATER SUPPRESSION", text_color="black", bgcolor = "#DDDDDD", font_size= 12, pos_x = 430, pos_y = 20, size_x = 140, size_y = 50))
 main_panel.add_element(HALE.ToggleButton(off_text="FUEL NOGO", on_text = "FUEL GO", font_size= 16, pos_x = 280, pos_y = 110, size_x = 135, size_y = 60))
@@ -33,7 +63,7 @@ main_panel.add_element(HALE.IndicatorLight(text="ABV-WS-610 LED", starting_color
 
 
 #right side, from top to bottom
-main_panel.add_element(HALE.IndicatorLight(text="Ignitor", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 815, pos_y = 30, size_x = 150, size_y = 50, refresh_interval = 500))
+main_panel.add_element(HALE.IndicatorLight(text="Igniter", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 815, pos_y = 30, size_x = 150, size_y = 50, refresh_interval = 500))
 main_panel.add_element(HALE.IndicatorLight(text="ABV-WS-620 LED", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 790, pos_y = 110, size_x = 150, size_y = 50, refresh_interval = 1000))
 
 main_panel.add_element(HALE.PushButton(text="Go Away Fire (Please)", text_color="black", bgcolor = "#BBBBBB", font_size= 16, pos_x = 790, pos_y = 170, size_x = 140, size_y = 80))
@@ -64,7 +94,7 @@ main_panel.add_element(HALE.ToggleButton(off_text="CAM\nNOGO", on_text = "CAM\nG
 main_panel.add_element(HALE.ToggleButton(off_text="RECORD\nNOGO", on_text = "RECORD\nGO", font_size= 12, pos_x = 175, pos_y = 335, size_x = 90, size_y = 50))
 main_panel.add_element(HALE.ToggleButton(off_text="OFFICE\nNOGO", on_text = "OFFICE\nGO", font_size= 12, pos_x = 175, pos_y = 395, size_x = 90, size_y = 50))
 main_panel.add_element(HALE.ToggleButton(off_text="WATER SUPPLY\nNOGO", on_text = "WATER SUPPLY\nGO", font_size= 12, pos_x = 175, pos_y = 455, size_x = 90, size_y = 50))
-main_panel.add_element(HALE.ToggleButton(off_text="IGNITOR\nSAFE", on_text = "IGNITOR\nARMED", font_size= 12, pos_x = 175, pos_y = 515, size_x = 90, size_y = 50))
+main_panel.add_element(HALE.ToggleButton(off_text="IGNITER\nSAFE", on_text = "IGNITER\nARMED", font_size= 12, pos_x = 175, pos_y = 515, size_x = 90, size_y = 50))
 
 main_panel.add_element(HALE.ToggleButton(off_text="NANNY MODE OFF", on_text = "NANNY MODE ON", on_bgcolor="#679876", off_bgcolor = "#2B3E4F", font_size= 14, pos_x = 60, pos_y = 650, size_x = 140, size_y = 90))
 
@@ -91,7 +121,6 @@ main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX FILL)", font_s
 
 #bottom
 main_panel.add_element(HALE.PushButton(text="ABORT", text_color="white", bgcolor = "#5dc926", font_size= 48, pos_x = 315, pos_y = 840, size_x = 380, size_y = 150))
-
 
 
 main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(1)], pos_x = 85, pos_y = 180, size_x = 75, size_y = 75, refresh_interval = 500))
