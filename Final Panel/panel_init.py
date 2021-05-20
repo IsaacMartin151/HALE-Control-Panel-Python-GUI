@@ -9,28 +9,28 @@ client = HALE.Interface()
 
 main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 engine_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
-indicator_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800, background_image=tk.PhotoImage(file="./IndicatorPanelBg")))
+indicator_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800, bgcolor=None, background_image=tk.PhotoImage(file="./IndicatorPanelBg")))
 
 
 ########## INDICATOR PANEL #########
 
-indicator_panel.add_element(HALE.IndicatorLight(text="Command", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=44, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Ox", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=87, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Fuel", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=132, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Command", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Ox", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=87, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Fuel", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
 
-indicator_panel.add_element(HALE.IndicatorLight(text="WS", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=44, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Camera", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=87, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Office", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=132, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Record", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=176, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Igniter GO", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=219, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="WS", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Camera", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=87, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Office", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Record", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=176, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Igniter GO", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
 
-indicator_panel.add_element(HALE.IndicatorLight(text="Nanny", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=44, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Sequence Flow Meter", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=132, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Cold Flow", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=219, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Nanny", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Sequence Flow Meter", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Cold Flow", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
 
-indicator_panel.add_element(HALE.IndicatorLight(text="ABORT", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=44, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Igniter Armed", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=132, size_x=13, size_y=24, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Startup", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=219, size_x=13, size_y=24, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="ABORT", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Igniter Armed", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Startup", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
 
 
 ########## ENGINE PANEL ###########
