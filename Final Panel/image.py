@@ -10,8 +10,8 @@ class Image(element.Element):
         super().__init__(**kwargs)
 
     def display_content(self):
-        self.image = tk.PhotoImage(file=self.file)
-        self.c = tk.Label(self.containing_frame, width=self.abs_size_x, height=self.abs_size_y, image=self.image, bd=0)
+        self.image = tk.PhotoImage(file=self.file, width=self.abs_size_x, height=self.abs_size_y)
+        self.c = tk.Label(self.containing_frame, image=self.image, bd=0)
         self.c.pack(expand=True, fill="both")
 
 
