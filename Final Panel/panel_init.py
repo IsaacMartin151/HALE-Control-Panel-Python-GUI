@@ -9,7 +9,7 @@ client = HALE.Interface()
 
 main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 engine_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
-indicator_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800, bgcolor=None, background_image=tk.PhotoImage(file="./IndicatorPanelBg")))
+indicator_panel = client.add_panel(HALE.Panel(size_x = 1900, size_y = 950))
 
 
 
@@ -26,6 +26,9 @@ main_panel.add_element(HALE.Image(pos_x = 400, pos_y = 200, size_x=200, size_y =
 
 
 ########## INDICATOR PANEL #########
+
+IndicatorPanelBg = tk.PhotoImage(file="./IndicatorPanelBg", width=1900, height=950)
+indicator_panel.add_element(HALE.Image(pos_x=0, pos_y=0, image=IndicatorPanelBg))
 
 indicator_panel.add_element(HALE.IndicatorLight(text="Command", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
 indicator_panel.add_element(HALE.IndicatorLight(text="Ox", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=87, size_x = 150, size_y = 50, refresh_interval=1000))
