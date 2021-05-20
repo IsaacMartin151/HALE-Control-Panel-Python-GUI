@@ -4,6 +4,7 @@ from typing import Sized
 import numpy as np
 import random
 import HALE
+import enums
 
 client = HALE.Interface()
 
@@ -25,25 +26,25 @@ indicator_panel = client.add_panel(HALE.Panel(size_x = 1900, size_y = 950))
 
 ########## INDICATOR PANEL #########
 
-indicator_panel.add_element(HALE.Image(image="./IndicatorPanelBg.png", Z=HALE.Depths.BACKGROUND, pos_x=0, pos_y=0, size_x=1000, size_y=1000))
+indicator_panel.add_element(HALE.Image(file="./IndicatorPanelBg.PNG", z=HALE.Depths.BACKGROUND, pos_x=0, pos_y=0, size_x=1000, size_y=1000))
 
-indicator_panel.add_element(HALE.IndicatorLight(text="Command", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Ox", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=87, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Fuel", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Command", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Ox", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=87, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Fuel", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
 
-indicator_panel.add_element(HALE.IndicatorLight(text="WS", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Camera", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=87, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Office", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Record", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=176, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Igniter GO", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="WS", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Camera", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=87, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Office", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Record", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=176, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Igniter GO", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=829, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
 
-indicator_panel.add_element(HALE.IndicatorLight(text="Nanny", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Sequence Flow Meter", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Cold Flow", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Nanny", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Sequence Flow Meter", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Cold Flow", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=872, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
 
-indicator_panel.add_element(HALE.IndicatorLight(text="ABORT", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Igniter Armed", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
-indicator_panel.add_element(HALE.IndicatorLight(text="Startup", starting_color="#969696", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="ABORT", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=44, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Igniter Armed", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=132, size_x = 150, size_y = 50, refresh_interval=1000))
+indicator_panel.add_element(HALE.IndicatorLight(text="Startup", starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=219, size_x = 150, size_y = 50, refresh_interval=1000))
 
 
 ########## ENGINE PANEL ###########
@@ -114,31 +115,18 @@ main_panel.add_element(HALE.ToggleButton(off_text="NANNY MODE OFF", on_text = "N
 #center
 main_panel.add_element(HALE.Rectangle(color="#b3b3b3", z = HALE.Depths.BACKGROUND, pos_x = 270, pos_y = 180, size_x = 470, size_y = 640))
 
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-PR-120 (FUEL PRESS)", font_size=12, pos_x=334, pos_y=308, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-FU-310 (FUEL VENT)", font_size=12, pos_x=334, pos_y=394, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-FU-320 (FUEL ISO)", font_size=12, pos_x=334, pos_y=482, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-FU-330 (FUEL PURGE)", font_size=12, pos_x=334, pos_y=560, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-FU-340 (FUEL MAIN)", font_size=12, pos_x=334, pos_y=641, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-PR-120 (FUEL PRESS)", off_text="ABV-PR-120 (FUEL PRESS)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=308, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-310 (FUEL VENT) on", off_text="ABV-FU-310 (FUEL VENT)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=394, size_x=166, size_y=48, starting_state=enums.ToggleStates.ON))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-320 (FUEL ISO)", off_text="ABV-FU-320 (FUEL ISO)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=482, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-330 (FUEL PURGE)", off_text="ABV-FU-330 (FUEL PURGE)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=560, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-340 (FUEL MAIN)", off_text="ABV-FU-340 (FUEL MAIN)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=641, size_x=166, size_y=48))
 
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-PR-110 (OX PRESS)", font_size=12, pos_x=516, pos_y=308, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX VENT)", font_size=12, pos_x=516, pos_y=394, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX ISO)", font_size=12, pos_x=516, pos_y=482, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX CHILL)", font_size=12, pos_x=516, pos_y=560, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX MAIN)", font_size=12, pos_x=516, pos_y=641, size_x=166, size_y=48))
-main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX FILL)", font_size=12, pos_x=516, pos_y=724, size_x=166, size_y=48))
-
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 274+30, pos_y = 308, size_x = 20, size_y = 50, refresh_interval = 500))
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 274+30, pos_y = 394, size_x = 20, size_y = 50, refresh_interval = 1000))
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 274+30, pos_y = 482, size_x = 20, size_y = 50, refresh_interval = 500))
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 274+30, pos_y = 560, size_x = 20, size_y = 50, refresh_interval = 1000))
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 274+30, pos_y = 641, size_x = 20, size_y = 50, refresh_interval = 500))
-
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 576+115, pos_y = 308, size_x = 20, size_y = 50, refresh_interval = 1000))
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 576+115, pos_y = 394, size_x = 20, size_y = 50, refresh_interval = 500))
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 576+115, pos_y = 482, size_x = 20, size_y = 50, refresh_interval = 1000))
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 576+115, pos_y = 560, size_x = 20, size_y = 50, refresh_interval = 500))
-main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 576+115, pos_y = 641, size_x = 20, size_y = 50, refresh_interval = 1000))
-
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-PR-110 (OX PRESS)", off_text="ABV-PR-110 (OX PRESS)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=308, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX VENT) on", off_text="ABV-OX-120 (OX VENT)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=394, size_x=166, size_y=48, starting_state=enums.ToggleStates.ON))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX ISO)", off_text="ABV-OX-120 (OX ISO)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=482, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX CHILL)", off_text="ABV-OX-120 (OX CHILL)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=560, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX MAIN)", off_text="ABV-OX-120 (OX MAIN)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=641, size_x=166, size_y=48))
+main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX FILL)", off_text="ABV-OX-120 (OX FILL)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=724, size_x=166, size_y=48))
 
 
 

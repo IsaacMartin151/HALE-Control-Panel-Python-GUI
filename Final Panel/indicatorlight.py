@@ -5,15 +5,16 @@ import enums
 import helpers
 
 class IndicatorLight(element.Element):
-    def __init__(self, *, text="Indicator Label", starting_color="green", text_color = "white", get_data = None, **kwargs):
+    def __init__(self, *, text="Indicator Label", starting_color="green", text_color = "white", font=("Arial", 12), get_data = None, **kwargs):
         self.get_data = get_data
         self.color = starting_color
         self.text_color = text_color
         self.text = text
+        self.font = font
         super().__init__(**kwargs)
 
     def display_content(self):
-        title = tk.Label(self.containing_frame, text=self.text, fg=self.text_color, bg=self.panel_bgcolor, font=("Arial", 12))
+        title = tk.Label(self.containing_frame, text=self.text, fg=self.text_color, bg=self.panel_bgcolor, font=self.font)
 
         canvas_padding = 24
 

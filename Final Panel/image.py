@@ -5,11 +5,12 @@ import enums
 import helpers
 
 class Image(element.Element):
-    def __init__(self, *, image="./hale.png", **kwargs):
-        self.image = image
+    def __init__(self, *, file="./hale.png", **kwargs):
+        self.file = file
         super().__init__(**kwargs)
 
     def display_content(self):
+        self.image = tk.PhotoImage(file=self.file)
         self.c = tk.Label(self.containing_frame, width=self.abs_size_x, height=self.abs_size_y, image=self.image, bd=0)
         self.c.pack(expand=True, fill="both")
 
