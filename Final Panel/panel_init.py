@@ -8,7 +8,18 @@ client = HALE.Interface()
 
 main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 engine_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
+sensor_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 
+
+
+#Logos
+background_image = tk.PhotoImage(file = "./hale.png", width=100, height=60)
+main_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, width=100, height=60, image=background_image))
+engine_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, width=100, height=60, image=background_image))
+sensor_panel.add_element(HALE.Image(pos_x = 0, pos_y = 0, width=100, height=60, image=background_image))
+
+background_label3 = tk.Label(sensor_panel, image=background_image)
+background_label3.place(x=0, y=0, width=100, height=60)
 
 #logging box
 log_box = main_panel.add_element(HALE.LoggingBox(pos_x = 0, pos_y = 800, size_x = 200, size_y = 100))
@@ -19,7 +30,6 @@ thrust_pressure = engine_panel.add_element(HALE.Chart(pos_x = 120, pos_y = 600, 
 
 engine_panel.add_element(HALE.IndicatorLight(text="Ox Main Valve", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 20, pos_y = 640, size_x = 100, size_y = 50, refresh_interval = 50))
 engine_panel.add_element(HALE.IndicatorLight(text="Fuel Main Valve", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF00FF" ), pos_x = 20, pos_y = 740, size_x = 100, size_y = 50, refresh_interval = 50))
-
 
 #top
 engine_panel.add_element(HALE.PushButton(text="Second Panel", onclick = lambda : (log_box.add_message(text="Second panel label clicked", color="Red")), text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 1500, pos_y = 700, size_x = 100, size_y = 100))
@@ -86,6 +96,19 @@ main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX ISO)", font_si
 main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX CHILL)", font_size=12, pos_x=516, pos_y=560, size_x=166, size_y=48))
 main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX MAIN)", font_size=12, pos_x=516, pos_y=641, size_x=166, size_y=48))
 main_panel.add_element(HALE.ToggleButton(off_text="ABV-OX-120 (OX FILL)", font_size=12, pos_x=516, pos_y=724, size_x=166, size_y=48))
+
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 274+30, pos_y = 308, size_x = 20, size_y = 50, refresh_interval = 500))
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 274+30, pos_y = 394, size_x = 20, size_y = 50, refresh_interval = 1000))
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 274+30, pos_y = 482, size_x = 20, size_y = 50, refresh_interval = 500))
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 274+30, pos_y = 560, size_x = 20, size_y = 50, refresh_interval = 1000))
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 274+30, pos_y = 641, size_x = 20, size_y = 50, refresh_interval = 500))
+
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 576+115, pos_y = 308, size_x = 20, size_y = 50, refresh_interval = 1000))
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 576+115, pos_y = 394, size_x = 20, size_y = 50, refresh_interval = 500))
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 576+115, pos_y = 482, size_x = 20, size_y = 50, refresh_interval = 1000))
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#FF0000", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x = 576+115, pos_y = 560, size_x = 20, size_y = 50, refresh_interval = 500))
+main_panel.add_element(HALE.IndicatorLight(text="", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 576+115, pos_y = 641, size_x = 20, size_y = 50, refresh_interval = 1000))
+
 
 
 

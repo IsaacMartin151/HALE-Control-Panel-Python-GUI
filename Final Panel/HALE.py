@@ -6,6 +6,7 @@ from pushbutton import *
 from togglebutton import *
 from indicatorlight import *
 from rectangle import *
+from image import *
 from loggingbox import *
 from chart import *
 
