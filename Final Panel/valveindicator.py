@@ -37,15 +37,17 @@ class ValveIndicator(element.Element):
 
     def update(self):
         if (self.get_data):
-            self.state = self.get_data
+            self.state = self.get_data()
 
             if (self.state == enums.ToggleStates.OFF):
                 #self.c.itemconfig(self.c, bg=self.off_bgcolor)
                 self.c.itemconfig(self.indicator_text, text=self.off_text)
+                self.c.configure(bg=self.off_bgcolor)
 
             elif (self.state == enums.ToggleStates.ON):
                 #self.c.itemconfig(self.c, bg=self.on_bgcolor)
                 self.c.itemconfig(self.indicator_text, text=self.on_text)
+                self.c.configure(bg=self.on_bgcolor)
 
         else:
             throw (ValueError("Invalid ValveIndicator State"))

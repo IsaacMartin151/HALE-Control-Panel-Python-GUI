@@ -4,7 +4,6 @@ from typing import Sized
 import numpy as np
 import random
 import HALE
-import enums
 
 client = HALE.Interface()
 
@@ -170,30 +169,30 @@ main_panel.add_element(HALE.Image(file="./halegray.png", pos_x=(270+470/2)-(117/
 
 
 fuel_press = main_panel.add_element(HALE.ToggleButton(on_text="ABV-PR-120 (FUEL PRESS)", off_text="ABV-PR-120 (FUEL PRESS)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=308, size_x=166, size_y=48))
-fuel_vent  = main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-310 (FUEL VENT)",  off_text="ABV-FU-310 (FUEL VENT)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=394, size_x=166, size_y=48, starting_state=enums.ToggleStates.ON))
+fuel_vent  = main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-310 (FUEL VENT)",  off_text="ABV-FU-310 (FUEL VENT)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=394, size_x=166, size_y=48, starting_state=HALE.ToggleStates.ON))
 fuel_iso   = main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-320 (FUEL ISO)",   off_text="ABV-FU-320 (FUEL ISO)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=482, size_x=166, size_y=48))
 fuel_purge = main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-330 (FUEL PURGE)", off_text="ABV-FU-330 (FUEL PURGE)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=560, size_x=166, size_y=48))
 fuel_main  = main_panel.add_element(HALE.ToggleButton(on_text="ABV-FU-340 (FUEL MAIN)",  off_text="ABV-FU-340 (FUEL MAIN)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=334, pos_y=641, size_x=166, size_y=48))
 
 ox_press = main_panel.add_element(HALE.ToggleButton(on_text="ABV-PR-110 (OX PRESS)", off_text="ABV-PR-110 (OX PRESS)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=308, size_x=166, size_y=48))
-ox_vent  = main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX VENT)",  off_text="ABV-OX-120 (OX VENT)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=394, size_x=166, size_y=48, starting_state=enums.ToggleStates.ON))
+ox_vent  = main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX VENT)",  off_text="ABV-OX-120 (OX VENT)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=394, size_x=166, size_y=48, starting_state=HALE.ToggleStates.ON))
 ox_iso   = main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX ISO)",   off_text="ABV-OX-120 (OX ISO)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=482, size_x=166, size_y=48))
 ox_chill = main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX CHILL)", off_text="ABV-OX-120 (OX CHILL)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=560, size_x=166, size_y=48))
 ox_main  = main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX MAIN)",  off_text="ABV-OX-120 (OX MAIN)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=641, size_x=166, size_y=48))
 ox_fill  = main_panel.add_element(HALE.ToggleButton(on_text="ABV-OX-120 (OX FILL)",  off_text="ABV-OX-120 (OX FILL)", on_bgcolor="#464646", off_bgcolor="#464646", font_size=12, pos_x=516, pos_y=724, size_x=166, size_y=48))
 
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=fuel_press.get_state(), pos_x=280, pos_y=308, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.ON,  get_data=fuel_vent.get_state(), pos_x=280, pos_y=394, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=fuel_iso.get_state(), pos_x=280, pos_y=482, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=fuel_purge.get_state(), pos_x=280, pos_y=560, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=fuel_main.get_state(), pos_x=280, pos_y=641, size_x=48, size_y=48, refresh_interval=500))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=fuel_press.get_state, pos_x=280, pos_y=308, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.ON,  get_data=fuel_vent.get_state, pos_x=280, pos_y=394, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=fuel_iso.get_state, pos_x=280, pos_y=482, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=fuel_purge.get_state, pos_x=280, pos_y=560, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=fuel_main.get_state, pos_x=280, pos_y=641, size_x=48, size_y=48, refresh_interval=50))
 
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=ox_press.get_state(), pos_x=686, pos_y=308, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.ON,  get_data=ox_vent.get_state(), pos_x=686, pos_y=394, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=ox_iso.get_state(), pos_x=686, pos_y=482, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=ox_chill.get_state(), pos_x=686, pos_y=560, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=ox_main.get_state(), pos_x=686, pos_y=641, size_x=48, size_y=48, refresh_interval=500))
-main_panel.add_element(HALE.ValveIndicator(state=enums.ToggleStates.OFF, get_data=ox_fill.get_state(), pos_x=686, pos_y=723, size_x=48, size_y=48, refresh_interval=500))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=ox_press.get_state, pos_x=686, pos_y=308, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.ON,  get_data=ox_vent.get_state, pos_x=686, pos_y=394, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=ox_iso.get_state, pos_x=686, pos_y=482, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=ox_chill.get_state, pos_x=686, pos_y=560, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=ox_main.get_state, pos_x=686, pos_y=641, size_x=48, size_y=48, refresh_interval=50))
+main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data=ox_fill.get_state, pos_x=686, pos_y=723, size_x=48, size_y=48, refresh_interval=50))
 
 
 #bottom
