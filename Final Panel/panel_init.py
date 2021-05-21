@@ -61,6 +61,9 @@ indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da
 ########## ENGINE PANEL ###########
 engine_panel.add_element(HALE.Image(file="./haleblack.png", pos_x=335, pos_y=50, size_x=291, size_y=215))
 
+# resize_x and resize_y are absolute pixel dimensions, size_x and size_y are according to the 1000x1000 grid
+engine_panel.add_element(HALE.Image(file="./engine.png", pos_x=350, pos_y=320, resize_x=393, resize_y=144, size_x=246, size_y=180))
+
 engine_panel.add_element(HALE.PushButton(text="Second Panel", onclick = lambda : (log_box.add_message(text="Second panel label clicked", color="Red")), text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 1500, pos_y = 700, size_x = 100, size_y = 100))
 
 tank_temps        = engine_panel.add_element(HALE.Chart(pos_x = 0, pos_y = 0, size_x = 300, size_y = 400, title="Tank Temps", xlabel="Time", ylabel="Pressure"))
