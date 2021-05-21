@@ -16,7 +16,7 @@ indicator_panel = client.add_panel(HALE.Panel(size_x = 1900, size_y = 950))
 ########## INDICATOR PANEL #########
 
 #top right
-indicator_panel.add_element(HALE.Image(file="./IndicatorPanelBg.PNG", z=HALE.Depths.BACKGROUND, pos_x=0, pos_y=0, size_x=1000, size_y=1000))
+indicator_panel.add_element(HALE.Image(file="./IndicatorPanelBgNew.PNG", z=HALE.Depths.BACKGROUND, pos_x=0, pos_y=0, size_x=1000, size_y=1000))
 
 indicator_panel.add_element(HALE.IndicatorLight(text="Command",             starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=45, size_x = 55, size_y = 50, refresh_interval=1000))
 indicator_panel.add_element(HALE.IndicatorLight(text="Ox",                  starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=95, size_x = 55, size_y = 50, refresh_interval=1000))
@@ -37,25 +37,60 @@ indicator_panel.add_element(HALE.IndicatorLight(text="Igniter Armed",       star
 indicator_panel.add_element(HALE.IndicatorLight(text="Startup",             starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=939, pos_y=245, size_x = 55, size_y = 50, refresh_interval=1000))
 
 #p&id
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=None, pos_x=65, pos_y=86, size_x = 17, size_y = 29, refresh_interval=1000)) # ABV-WS-610
+indicator_panel.add_element(HALE.IndicatorLight(text="ABV-WS-610", starting_color="#ff0000", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=65, pos_y=86, size_x = 87, size_y = 57, refresh_interval=3000)) # ABV-WS-610
 
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=None, pos_x=325, pos_y=148, size_x = 15, size_y = 23, refresh_interval=1000)) # ABV-OX-210
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=None, pos_x=623, pos_y=436, size_x = 15, size_y = 23, refresh_interval=1000)) # ABV-OX-220
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=None, pos_x=695, pos_y=375, size_x = 15, size_y = 23, refresh_interval=1000)) # ABV-OX-230
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=None, pos_x=777, pos_y=578, size_x = 15, size_y = 23, refresh_interval=1000)) # ABV-OX-320
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=None, pos_x=487, pos_y=501, size_x = 15, size_y = 23, refresh_interval=1000)) # ABV-OX-250
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=325, pos_y=148, size_x = 15, size_y = 23, refresh_interval=3000)) # ABV-OX-210
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=623, pos_y=436, size_x = 15, size_y = 23, refresh_interval=3000)) # ABV-OX-220
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=695, pos_y=375, size_x = 15, size_y = 23, refresh_interval=3000)) # ABV-OX-230
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=777, pos_y=578, size_x = 15, size_y = 23, refresh_interval=3000)) # ABV-OX-320
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=487, pos_y=501, size_x = 15, size_y = 23, refresh_interval=3000)) # ABV-OX-250
 
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=None, pos_x=140, pos_y=342, size_x = 14, size_y = 24, refresh_interval=1000)) # ABV-PR-110
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=None, pos_x=139, pos_y=674, size_x = 14, size_y = 24, refresh_interval=1000)) # ABV-PR-120
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=140, pos_y=342, size_x = 14, size_y = 24, refresh_interval=3000)) # ABV-PR-110
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=139, pos_y=674, size_x = 14, size_y = 24, refresh_interval=3000)) # ABV-PR-120
 
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=None, pos_x=317, pos_y=858, size_x = 14, size_y = 23, refresh_interval=1000)) # ABV-FU-310
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=None, pos_x=619, pos_y=773, size_x = 14, size_y = 23, refresh_interval=1000)) # ABV-FU-320
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=None, pos_x=786, pos_y=836, size_x = 14, size_y = 23, refresh_interval=1000)) # ABV-FU-330
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=None, pos_x=777, pos_y=719, size_x = 14, size_y = 23, refresh_interval=1000)) # ABV-FU-340
-indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=None, pos_x=451, pos_y=846, size_x = 14, size_y = 23, refresh_interval=1000)) # MBV-FU-350
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=317, pos_y=858, size_x = 14, size_y = 23, refresh_interval=3000)) # ABV-FU-310
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=619, pos_y=773, size_x = 14, size_y = 23, refresh_interval=3000)) # ABV-FU-320
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=786, pos_y=836, size_x = 14, size_y = 23, refresh_interval=3000)) # ABV-FU-330
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=777, pos_y=719, size_x = 14, size_y = 23, refresh_interval=3000)) # ABV-FU-340
+indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=451, pos_y=846, size_x = 14, size_y = 23, refresh_interval=3000)) # MBV-FU-350
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-PR-140", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=80, pos_y=160, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-210", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=215, pos_y=140, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-OX-211", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=270, pos_y=225, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-OX-211", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=270, pos_y=225, size_x = 35, size_y = 45, refresh_interval=500)) 
 
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-220", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=430, pos_y=260, size_x = 35, size_y = 45, refresh_interval=500))
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-221", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=430, pos_y=310, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-222", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=430, pos_y=360, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-223", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=430, pos_y=410, size_x = 35, size_y = 45, refresh_interval=500)) 
 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-PR-110", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=30, pos_y=440, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-PR-130", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=175, pos_y=435, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-PR-120", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=175, pos_y=575, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-PR-110", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=75, pos_y=480, size_x = 35, size_y = 45, refresh_interval=500)) 
 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-OX-210", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=350, pos_y=340, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-FU-310", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=350, pos_y=650, size_x = 35, size_y = 45, refresh_interval=500)) 
+
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-FU-320", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=430, pos_y=735, size_x = 35, size_y = 45, refresh_interval=500)) 
+
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-FU-310", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=215, pos_y=730, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-FU-311", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=275, pos_y=790, size_x = 35, size_y = 45, refresh_interval=500)) 
+
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-FU-330", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=580, pos_y=770, size_x = 35, size_y = 45, refresh_interval=500)) 
+
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-OX-230", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=675, pos_y=600, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-FU-230", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=675, pos_y=650, size_x = 35, size_y = 45, refresh_interval=500)) 
+
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-OX-240", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=535, pos_y=550, size_x = 35, size_y = 45, refresh_interval=500)) 
+
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-230", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=580, pos_y=430, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-240", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=650, pos_y=365, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-250", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=730, pos_y=295, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-OX-220", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=730, pos_y=470, size_x = 35, size_y = 45, refresh_interval=500)) 
+indicator_panel.add_element(HALE.NumericDisplay(text="PT-FU-320", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=730, pos_y=790, size_x = 35, size_y = 45, refresh_interval=500)) 
+
+indicator_panel.add_element(HALE.BarChart(get_data=lambda : (random.randint(50, 60) ), bgcolor = "#FFFFFF", pos_x=399, pos_y=281, size_x = 14, size_y = 127, refresh_interval=50)) 
+indicator_panel.add_element(HALE.BarChart(get_data=lambda : (random.randint(0, 100) ), bgcolor = "#FFFFFF", barcolor = "#FF0000", pos_x=398, pos_y=621, size_x = 15, size_y = 128, refresh_interval=1000)) 
 
 
 ########## ENGINE PANEL ###########

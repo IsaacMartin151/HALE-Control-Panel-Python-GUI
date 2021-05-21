@@ -10,3 +10,5 @@ from image import *
 from loggingbox import *
 from chart import *
 from valveindicator import *
+from numericdisplay import *
+from barchart import *
