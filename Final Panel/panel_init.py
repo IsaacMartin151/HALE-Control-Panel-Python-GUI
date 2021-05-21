@@ -98,11 +98,11 @@ engine_panel.add_element(HALE.Image(file="./haleblack.png", pos_x=335, pos_y=50,
 # resize_x and resize_y are absolute pixel dimensions, size_x and size_y are according to the 1000x1000 grid
 engine_panel.add_element(HALE.Image(file="./engine.png", pos_x=350, pos_y=320, resize_x=393, resize_y=144, size_x=246, size_y=180))
 
-engine_panel.add_element(HALE.PushButton(text="Second Panel", onclick = lambda : (log_box.add_message(text="Second panel label clicked", color="Red")), text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 1500, pos_y = 700, size_x = 100, size_y = 100))
+engine_panel.add_element(HALE.PushButton(text="Second Panel", onclick = lambda : (log_box.add_message(text="Second panel label clicked", color="Red")), text_color="black", bgcolor = "#DDDDDD", font_size= 30, pos_x = 1500, pos_y = 700, size_x = 1000, size_y = 100))
 
-tank_temps        = engine_panel.add_element(HALE.Chart(pos_x = 0, pos_y = 0, size_x = 300, size_y = 400, title="Tank Temps", xlabel="Time", ylabel="Pressure"))
-chamber_pressures = engine_panel.add_element(HALE.Chart(pos_x = 650, pos_y = 0, size_x = 300, size_y = 400, title="Chamber Pressures", xlabel="Time", ylabel="Amplitude"))
-thrust_pressure   = engine_panel.add_element(HALE.Chart(pos_x = 120, pos_y = 600, size_x = 700, size_y = 350, title="Pressures(psi) - Thrust (lbf)", xlabel="Time", ylabel="Thrust - Pressure"))
+engine_panel.add_element(HALE.Chart(pos_x = 0, pos_y = 0, size_x = 300, size_y = 400, title="Tank Temps", xlabel="Time", ylabel="Amplitude", lines = [("TC-OX-220", "#FFFFFF"), ("TC-OX-221", "#FF00FF"), ("TC-OX-222", "#0000FF"), ("TC-OX-223", "#FF0000"), ("TC-FU-320", "#00FF00"), ("TC-CC-410", "#FFFF00"), ("TC-CC-411", "#00FFFF"), ("TC-CC-412", "#123456")], get_data = lambda : (random.randint(50, 100), random.randint(60, 100),random.randint(70, 75),random.randint(80, 90),random.randint(0, 30),random.randint(0, 40), random.randint(25, 30), random.randint(80, 83)), refresh_interval = 2000))
+engine_panel.add_element(HALE.Chart(pos_x = 650, pos_y = 0, size_x = 300, size_y = 400, title="Chamber Pressures", xlabel="Time", ylabel="Amplitude", lines = [("PT-CC-410", "#FFFFFF"), ("PT-CC-420", "#FF00FF")], get_data = lambda : (random.randint(100, 105), random.randint(200, 210)), refresh_interval = 5000))
+engine_panel.add_element(HALE.Chart(pos_x = 120, pos_y = 600, size_x = 700, size_y = 350, title="Pressures(psi) - Thrust (lbf)", xlabel="Time", ylabel="Thrust - Pressure", lines = [("Thrust", "#000000")],get_data = lambda : tuple([random.randint(100, 105)]), refresh_interval = 3000))
 
 engine_panel.add_element(HALE.IndicatorLight(text="Ox Main Valve",   starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 20, pos_y = 640, size_x = 100, size_y = 50, refresh_interval = 50))
 engine_panel.add_element(HALE.IndicatorLight(text="Fuel Main Valve", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF00FF" ), pos_x = 20, pos_y = 740, size_x = 100, size_y = 50, refresh_interval = 50))
@@ -202,45 +202,9 @@ main_panel.add_element(HALE.PushButton(text="ABORT", text_color="white", bgcolor
 main_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#0e6e07", get_data = lambda : ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(1)], pos_x = 114, pos_y = 214, size_x = 22, size_y = 38, refresh_interval = 500))
 
 
-#Adding dummy data to the charts on the engine panel so it looks nice, also to show how to update data
-
-#Tank temps dummy data
-x = np.linspace(0, 100, 50)
-y = np.sin(2 * np.pi * x)
-tank_temps.add_info(x, y, "#82e2ff", "TC-OX-220")
-y = np.sin(2 * np.pi * x + .3)
-tank_temps.add_info(x, y, "#53a0b8", "TC-OX-221")
-y = np.sin(2 * np.pi * x + .6)
-tank_temps.add_info(x, y, "#377e94", "TC-OX-222")
-y = np.sin(2 * np.pi * x + .9)
-tank_temps.add_info(x, y, "#185669", "TC-OX-223")
-
-y = np.sin(2 * np.pi * x + 1.2)
-tank_temps.add_info(x, y, "#fa3e3e", "TC-FU-320")
-y = np.sin(2 * np.pi * x + 1.5)
-tank_temps.add_info(x, y, "#bf3030", "TC-CC-410")
-y = np.sin(2 * np.pi * x + 1.8)
-tank_temps.add_info(x, y, "#8f1313", "TC-CC-411")
-y = np.sin(2 * np.pi * x + 2.1)
-tank_temps.add_info(x, y, "#690606", "TC-CC-412")
-
-#Chamber pressures dummy data
-y = np.sin(2 * np.pi * x) * 510
-chamber_pressures.add_info(x, y, "#bf3030", "PT-CC-410")
-y = np.sin(2 * np.pi * x + 1.3) * 510
-chamber_pressures.add_info(x, y, "#8f1313", "PT-CC-420")
-
-#Thrust-Pressure dummy data
-y = np.sin(2 * np.pi * x) * 2150
-thrust_pressure.add_info(x, y, "#bf3030", "Thrust")
 
 
-get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" )
+
 
 client.display()
 
-#self.elements.append(pushbutton.PushButton(text="Bruh", anchor=enums.AnchorPoints.BOTTOMRIGHT, size_x = 600, size_y = 600, pos_x = 600, pos_y = 600))
-#self.elements.append(togglebutton.ToggleButton( anchor=enums.AnchorPoints.BOTTOMLEFT, size_x = 600, size_y = 600, pos_x = 600, pos_y = 600))
-         
-#self.elements.append(rectangle.Rectangle(z = enums.Depths.FOREGROUND, color="#222222",  anchor=enums.AnchorPoints.CENTER, size_x = 100, size_y = 100, pos_x = 850, pos_y = 850, refresh_interval = 200))
-#self.elements.append(indicatorlight.IndicatorLight(get_data = lambda : ("green" if random.randint(0, 5) < 3 else "red" ) ,   anchor=enums.AnchorPoints.CENTER, size_x = 200, size_y = 200, pos_x = 800, pos_y = 800, refresh_interval = 200))        

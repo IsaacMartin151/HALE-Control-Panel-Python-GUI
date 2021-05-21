@@ -5,7 +5,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
 class Chart(element.Element):
-    def __init__(self, *, title = "Chart title", font="Arial Bold", xlabel="Time", ylabel="Pressure", text_color="black", get_data = None, font_size = 24,  **kwargs):
+    def __init__(self, *, title = "Chart title", font="Arial Bold", xlabel="Time", max_points = 5, ylabel="Pressure", text_color="black", get_data = None, font_size = 24,  **kwargs):
         #self.figure1 = None
         self.lines = []
         self.get_data = get_data
@@ -14,6 +14,7 @@ class Chart(element.Element):
         self.xlabel = xlabel
         self.ylabel = ylabel
         self.font_size = font_size
+        self.max_points = max_points
         self.font = font
         super().__init__(**kwargs)
 
@@ -34,6 +35,7 @@ class Chart(element.Element):
     
 
     def update(self):
+            
         self.subplot.clear()
         self.subplot.set_title(self.title)
         self.subplot.set_xlabel("Time", color=self.text_color)
