@@ -17,7 +17,6 @@ indicator_panel = client.add_panel(HALE.Panel(size_x = 1900, size_y = 950))
 
 #top right
 indicator_panel.add_element(HALE.Image(file="./IndicatorPanelBg.PNG", z=HALE.Depths.BACKGROUND, pos_x=0, pos_y=0, size_x=1000, size_y=1000))
-indicator_panel.add_element(HALE.Image(file="./haleblack.png", pos_x=460, pos_y=0, size_x=291, size_y=215))
 
 indicator_panel.add_element(HALE.IndicatorLight(text="Command",             starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=45, size_x = 55, size_y = 50, refresh_interval=1000))
 indicator_panel.add_element(HALE.IndicatorLight(text="Ox",                  starting_color="#969696", font=("Arial", 8), get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=788, pos_y=95, size_x = 55, size_y = 50, refresh_interval=1000))
