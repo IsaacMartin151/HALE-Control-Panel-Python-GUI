@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import font as tkFont
 import element
 import enums
-import helpers
 
 class ValveIndicator(element.Element):
     def __init__(self, *, state=enums.ToggleStates.OFF, get_data=None, **kwargs):

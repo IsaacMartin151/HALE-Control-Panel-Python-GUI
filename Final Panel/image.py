@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import font as tkFont
 import element
 import enums
-import helpers
 import PIL.Image, PIL.ImageTk
 
 

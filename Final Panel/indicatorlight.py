@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import font as tkFont
 import element
 import enums
-import helpers
 
 class IndicatorLight(element.Element):
     def __init__(self, *, text="Indicator Label", starting_color="green", text_color = "white", font=("Arial", 12), bgcolor = None, get_data = None, **kwargs):

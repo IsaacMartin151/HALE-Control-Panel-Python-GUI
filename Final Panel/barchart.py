@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import font as tkFont
 import element
 import enums
-import helpers
 
 class BarChart(element.Element):
     def __init__(self, *, starting_value=50, min_value = 0, max_value = 100, barcolor = "#11FF11", bgcolor = None, get_data = None, **kwargs):

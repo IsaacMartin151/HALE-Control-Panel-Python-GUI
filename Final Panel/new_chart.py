@@ -35,7 +35,6 @@ class Chart(element.Element):
         self.scatter = FigureCanvasTkAgg(self.figure, self.containing_frame)
         #print("placing plot")
         self.scatter.get_tk_widget().pack(expand=True, fill="both")
-        ani = animation.FuncAnimation(self.figure, self.update, interval=self.refresh_interval)
 
     def update(self):
         if(self.get_data):
