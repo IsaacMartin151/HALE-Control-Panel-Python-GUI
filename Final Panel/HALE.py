@@ -8,7 +8,7 @@ from indicatorlight import *
 from rectangle import *
 from image import *
 from loggingbox import *
-from new_chart import *
+from chart import *
 from valveindicator import *
 from numericdisplay import *
 from barchart import *
