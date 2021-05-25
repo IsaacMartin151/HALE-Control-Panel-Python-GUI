@@ -89,7 +89,7 @@ indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-250", font=("Arial",
 indicator_panel.add_element(HALE.NumericDisplay(text="PT-OX-220", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=730, pos_y=470, size_x = 35, size_y = 45, refresh_interval=500)) 
 indicator_panel.add_element(HALE.NumericDisplay(text="PT-FU-320", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=730, pos_y=790, size_x = 35, size_y = 45, refresh_interval=500)) 
 
-indicator_panel.add_element(HALE.BarChart(get_data=lambda : (random.randint(50, 60) ), bgcolor = "#FFFFFF", barcolor = "#0000FF", pos_x=399, pos_y=281, size_x = 14, size_y = 127, refresh_interval=50)) 
+indicator_panel.add_element(HALE.BarChart(get_data=lambda : (random.randint(50, 60) ), bgcolor = "#FFFFFF", barcolor = "#00FF00", pos_x=399, pos_y=281, size_x = 14, size_y = 127, refresh_interval=50)) 
 indicator_panel.add_element(HALE.BarChart(get_data=lambda : (random.randint(0, 100) ), bgcolor = "#FFFFFF", barcolor = "#FF0000", pos_x=398, pos_y=621, size_x = 15, size_y = 128, refresh_interval=1000)) 
 
 
