@@ -93,15 +93,15 @@ indicator_panel.add_element(HALE.BarChart(get_data=lambda : (random.randint(0, 1
 
 
 ########## ENGINE PANEL ###########
-engine_panel.add_element(HALE.Image(file="./haleblack.png", pos_x=335, pos_y=50, size_x=291, size_y=215))
+engine_panel.add_element(HALE.Image(file="./haleblack.png", pos_x=335, pos_y=50, size_x=291, size_y=269))
 
 # resize_x and resize_y are absolute pixel dimensions, size_x and size_y are according to the 1000x1000 grid
 engine_panel.add_element(HALE.Image(file="./engine.png", pos_x=350, pos_y=320, resize_x=393, resize_y=144, size_x=246, size_y=180))
 
 
 engine_panel.add_element(HALE.Chart(pos_x = 0, pos_y = 0, size_x = 300, size_y = 400, title="Tank Temps", xlabel="Time", ylabel="Amplitude", lines = [("TC-OX-220", "#FFFFFF"), ("TC-OX-221", "#FF00FF"), ("TC-OX-222", "#0000FF"), ("TC-OX-223", "#FF0000"), ("TC-FU-320", "#00FF00"), ("TC-CC-410", "#FFFF00"), ("TC-CC-411", "#00FFFF"), ("TC-CC-412", "#123456")], get_data = lambda : (random.randint(50, 100), random.randint(60, 100),random.randint(70, 75),random.randint(80, 90),random.randint(0, 30),random.randint(0, 40), random.randint(25, 30), random.randint(80, 83)), refresh_interval = 200))
-engine_panel.add_element(HALE.Chart(pos_x = 650, pos_y = 0, size_x = 300, size_y = 400, title="Chamber Pressures", xlabel="Time", ylabel="Amplitude", lines = [("PT-CC-410", "#FFFFFF"), ("PT-CC-420", "#FF00FF")], get_data = lambda : (random.randint(100, 105), random.randint(200, 210)), refresh_interval = 5000))
-engine_panel.add_element(HALE.Chart(pos_x = 120, pos_y = 600, size_x = 700, size_y = 350, title="Pressures(psi) - Thrust (lbf)", xlabel="Time", ylabel="Thrust - Pressure", lines = [("Thrust", "#000000")],get_data = lambda : tuple([random.randint(100, 105)]), refresh_interval = 8000))
+engine_panel.add_element(HALE.Chart(pos_x = 650, pos_y = 0, size_x = 300, size_y = 400, title="Chamber Pressures", xlabel="Time", ylabel="Amplitude", lines = [("PT-CC-410", "#FFFFFF"), ("PT-CC-420", "#FF00FF")], get_data = lambda : (random.randint(100, 105), random.randint(200, 210)), refresh_interval = 500))
+engine_panel.add_element(HALE.Chart(pos_x = 120, pos_y = 600, size_x = 700, size_y = 350, title="Pressures(psi) - Thrust (lbf)", xlabel="Time", ylabel="Thrust - Pressure", lines = [("Thrust", "#000000")],get_data = lambda : tuple([random.randint(100, 105)]), refresh_interval = 500))
 
 engine_panel.add_element(HALE.IndicatorLight(text="Ox Main Valve",   starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#0e6e07" ), pos_x = 20, pos_y = 640, size_x = 100, size_y = 50, refresh_interval = 50))
 engine_panel.add_element(HALE.IndicatorLight(text="Fuel Main Valve", starting_color="#0e6e07", get_data = lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF00FF" ), pos_x = 20, pos_y = 740, size_x = 100, size_y = 50, refresh_interval = 50))
