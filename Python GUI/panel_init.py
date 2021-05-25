@@ -52,6 +52,7 @@ indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff00
 indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=786, pos_y=836, size_x = 14, size_y = 23, refresh_interval=3000)) # ABV-FU-330
 indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#ff0000", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=777, pos_y=719, size_x = 14, size_y = 23, refresh_interval=3000)) # ABV-FU-340
 indicator_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#00da6d", get_data=lambda : ("#00FF00" if random.randint(0, 5) < 3 else "#FF0000" ), pos_x=451, pos_y=846, size_x = 14, size_y = 23, refresh_interval=3000)) # MBV-FU-350
+
 indicator_panel.add_element(HALE.NumericDisplay(text="PT-PR-140", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=80, pos_y=160, size_x = 35, size_y = 45, refresh_interval=500)) 
 indicator_panel.add_element(HALE.NumericDisplay(text="TC-OX-210", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=215, pos_y=140, size_x = 35, size_y = 45, refresh_interval=500)) 
 indicator_panel.add_element(HALE.NumericDisplay(text="PT-OX-211", font=("Arial", 9), get_data=lambda : (random.randint(0, 10000)/10 ), pos_x=270, pos_y=225, size_x = 35, size_y = 45, refresh_interval=500)) 
@@ -112,6 +113,7 @@ engine_panel.add_element(HALE.IndicatorLight(text="Fuel Main Valve", starting_co
 #logging box
 log_box = main_panel.add_element(HALE.LoggingBox(pos_x = 0, pos_y = 800, size_x = 200, size_y = 100))
 
+
 #top
 main_panel.add_element(HALE.PushButton(text="WATER SUPPRESSION", text_color="black", bgcolor = "#DDDDDD", font_size= 12, pos_x = 430, pos_y = 20, size_x = 140, size_y = 50))
 
@@ -147,6 +149,9 @@ main_panel.add_element(HALE.PushButton(text="Valve Firing Sim",   text_color="bl
 
 #left side, from top to bottom
 main_panel.add_element(HALE.PushButton(text="Control Stop", text_color="red", bgcolor = "#BBBBBB", font_size= 24, pos_x = 10, pos_y = 100, size_x = 160, size_y = 60))
+
+main_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#0e6e07", get_data = lambda : ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(1)], pos_x = 114, pos_y = 214, size_x = 22, size_y = 38, refresh_interval = 500))
+
 main_panel.add_element(HALE.PushButton(text="Cryo Fill",    text_color="black", bgcolor = "#BBBBBB", font_size= 12, pos_x = 100, pos_y = 260, size_x = 50, size_y = 250))
 main_panel.add_element(HALE.PushButton(text="RECORD DATA",  text_color="black", bgcolor = "#DDDDDD", font_size= 10, pos_x = 190, pos_y = 200, size_x = 75, size_y = 40))
 
@@ -198,7 +203,6 @@ main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data
 main_panel.add_element(HALE.PushButton(text="ABORT", text_color="white", bgcolor = "#5dc926", font_size= 48, pos_x = 315, pos_y = 840, size_x = 380, size_y = 150))
 
 
-main_panel.add_element(HALE.IndicatorLight(text=None, starting_color="#0e6e07", get_data = lambda : ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(1)], pos_x = 114, pos_y = 214, size_x = 22, size_y = 38, refresh_interval = 500))
 
 
 
