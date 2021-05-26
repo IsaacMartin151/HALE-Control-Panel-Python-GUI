@@ -1,5 +1,9 @@
 from enum import IntEnum
 
+# Simple enumerator definitions for use in defining things
+
+# This file is not meant to be modified, but additional enumerations should be added here if they are needed
+
 class AnchorPoints(IntEnum):
     TOPLEFT = 1
     TOPRIGHT = 2

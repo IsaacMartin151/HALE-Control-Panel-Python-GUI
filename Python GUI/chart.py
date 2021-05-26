@@ -8,6 +8,13 @@ from matplotlib.figure import Figure
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 
+# This file defines the line charts used on the engine panel
+
+# All values listed in __init__ below are default values that can be modified by passing in different arguments from wherever the Chart is created.
+# This file is not intended to be modified
+
+# In order to add new data/change it, modify the lines[] array with new data
+
 class Chart(element.Element):
     def __init__(self, *, title = "Chart title", font="Arial Bold", xlabel="Time", max_points = 10,  lines = [("Series 1", "#FF0000")], ylabel="Pressure", text_color="black", get_data = None, font_size = 24,  **kwargs):
         #self.figure1 = None
@@ -25,7 +32,7 @@ class Chart(element.Element):
         super().__init__(**kwargs)
 
         
-
+    # function that makes the element visible
     def display_content(self):
         self.figure = Figure(figsize=(4,3), dpi=80, facecolor="#777777")
 
@@ -36,7 +43,9 @@ class Chart(element.Element):
         #print("placing plot")
         self.scatter.get_tk_widget().pack(expand=True, fill="both")
 
+    # function that updates the data periodically
     def update(self):
+        # self.get_data is an optional argument that tells the chart where to get its information from
         if(self.get_data):
             new_data = self.get_data()
             time = dt.datetime.now().strftime('%H:%M:%S.%f')
@@ -48,6 +57,8 @@ class Chart(element.Element):
                 self.y_data[line_idx].append(value)
                 if (len(self.y_data[line_idx]) > self.max_points):
                     self.y_data[line_idx] = self.y_data[line_idx][-self.max_points:]
+
+        # In order to make matplotlib charts update, you need to clear them and then replot the new information, which is done below
         self.subplot.clear()
         self.subplot.set_title(self.title)
         self.subplot.set_xlabel(self.xlabel, color=self.text_color)

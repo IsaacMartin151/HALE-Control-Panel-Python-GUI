@@ -3,6 +3,13 @@ from tkinter import font as tkFont
 import element
 import enums
 
+# This file defines the ValveIndicators used on the main panel
+
+# All values listed in __init__ below are default values that can be modified by passing in different arguments from wherever the ValveIndicator is created.
+# This file is not intended to be modified
+
+# These are the OPEN/CLOSED things in the center of the main panel. They are essentially text-based indicator lights
+
 class ValveIndicator(element.Element):
     def __init__(self, *, state=enums.ToggleStates.OFF, get_data=None, **kwargs):
         self.state = state
@@ -17,7 +24,7 @@ class ValveIndicator(element.Element):
 
         super().__init__(**kwargs)
 
-
+    # Make the ValveIndicator visible on the panel
     def display_content(self):
         text_font = tkFont.Font(family = self.font, size=self.font_size)
 
@@ -33,7 +40,7 @@ class ValveIndicator(element.Element):
 
         self.c.pack(expand=True, fill="both")
 
-
+    # Based on whether or not the valve is on or off, update the text and color
     def update(self):
         if (self.get_data):
             self.state = self.get_data()

@@ -3,7 +3,15 @@ from tkinter import font as tkFont
 import element
 import enums
 
+# This file defines the number displays used on the indicator panel
+
+# All values listed in __init__ below are default values that can be modified by passing in different arguments from wherever the NumericDisplay is created.
+# This file is not intended to be modified
+
+# This is just a small text box that shows a number
+
 class NumericDisplay(element.Element):
+    # Constructor for the numeric display, the default values can be overridden wherever it's created by passing in different arguments
     def __init__(self, *, text="Indicator Label", starting_value=0, text_color = "white", font=("Arial", 12), bgcolor = None, get_data = None, **kwargs):
         self.get_data = get_data
         self.value = starting_value
@@ -13,6 +21,7 @@ class NumericDisplay(element.Element):
         self.font = font
         super().__init__(**kwargs)
 
+    # Makes the numeric display visible on the panel
     def display_content(self):
         if (self.bgcolor == None):
             self.bgcolor = self.panel_bgcolor
@@ -28,6 +37,7 @@ class NumericDisplay(element.Element):
 
         
 
+    # If the numeric display was passed a get_data function, it should show whatever that the function's value is
     def update(self):
             if (self.get_data):
                 self.value = self.get_data()

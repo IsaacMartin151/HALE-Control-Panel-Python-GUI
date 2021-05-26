@@ -5,14 +5,25 @@ import numpy as np
 import random
 import HALE
 
+# This is the runnable portion of the code. Pretty much every individual line here is needed, as each line corresponds to something
+# unique that's created and/or 
+
+# This file should be the go-to file to add new things to the panel, to add additional panels, or to modify aspects of existing elements
+
+# The interface/client is the term for the overall application in its entirety. In this case, it refers to the combination of panels
 client = HALE.Interface()
 
+# Adding the 3 panels to the application
 main_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 engine_panel = client.add_panel(HALE.Panel(size_x = 1600, size_y = 800))
 indicator_panel = client.add_panel(HALE.Panel(size_x = 1900, size_y = 950))
 
 
 ########## INDICATOR PANEL #########
+
+# The following lines of code up until the next panel are adding elements to the indicator panel. 
+# If you want to change something about the indicator panel elements you can change their value below
+
 
 #top right
 indicator_panel.add_element(HALE.Image(file="./IndicatorPanelBgNew.PNG", z=HALE.Depths.BACKGROUND, pos_x=0, pos_y=0, size_x=1000, size_y=1000))
@@ -94,6 +105,10 @@ indicator_panel.add_element(HALE.BarChart(get_data=lambda : (random.randint(0, 1
 
 
 ########## ENGINE PANEL ###########
+
+# The following lines of code up until the next panel are adding elements to the engine panel. 
+# If you want to change something about the engine panel elements you can change their value below
+
 engine_panel.add_element(HALE.Image(file="./haleblack.png", pos_x=335, pos_y=50, size_x=291, size_y=269))
 
 # resize_x and resize_y are absolute pixel dimensions, size_x and size_y are according to the 1000x1000 grid
@@ -109,6 +124,8 @@ engine_panel.add_element(HALE.IndicatorLight(text="Fuel Main Valve", starting_co
 
 ########## MAIN PANEL ###########
 
+# The following lines of code up until the next panel are adding elements to the main control panel. 
+# If you want to change something about the main control panel elements you can change their value below
 
 #logging box
 log_box = main_panel.add_element(HALE.LoggingBox(pos_x = 0, pos_y = 800, size_x = 200, size_y = 100))
@@ -206,8 +223,6 @@ main_panel.add_element(HALE.PushButton(text="ABORT", text_color="white", bgcolor
 
 
 
-
-
-
+# This function tells the application to start running and displaying stuff
 client.display()
 

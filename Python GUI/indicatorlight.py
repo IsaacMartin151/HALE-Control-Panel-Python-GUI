@@ -3,7 +3,16 @@ from tkinter import font as tkFont
 import element
 import enums
 
+# This file defines the Indicator lights used on all 3 panels
+
+# All values listed in __init__ below are default values that can be modified by passing in different arguments from wherever the IndicatorLight is created.
+# This file is not intended to be modified
+
+# Right now placeholder random number generators are used to determine whether the lights should be on, make sure you change them to check the DAQ
+# so that get_data actually reflects what's going on
+
 class IndicatorLight(element.Element):
+    # Constructor for IndicatorLight, can override the default values here by specifying them on creation
     def __init__(self, *, text="Indicator Label", starting_color="green", text_color = "white", font=("Arial", 12), bgcolor = None, get_data = None, **kwargs):
         self.get_data = get_data
         self.color = starting_color
@@ -13,6 +22,7 @@ class IndicatorLight(element.Element):
         self.font = font
         super().__init__(**kwargs)
 
+    # function for having the indicator light be visible
     def display_content(self):
         if (self.bgcolor == None):
             self.bgcolor = self.panel_bgcolor
@@ -21,6 +31,7 @@ class IndicatorLight(element.Element):
 
         self.c = tk.Canvas(self.containing_frame, width=self.abs_size_x, height=self.abs_size_y-canvas_padding, bg=self.bgcolor, bd=0, highlightthickness=0, relief='ridge')
 
+        # If the light has text, add that underneath the light, otherwise just the light
         if (self.text):
             self.c.pack(side=tk.BOTTOM)
 
@@ -35,7 +46,7 @@ class IndicatorLight(element.Element):
             self.c.pack(expand=True, fill="both")
             
         
-
+    # If the IndicatorLight was given a get_data function, then change the color based on whatever the function is
     def update(self):
         if (self.get_data):
             self.color = self.get_data()
