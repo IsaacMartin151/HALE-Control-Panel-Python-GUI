@@ -28,7 +28,7 @@ class LoggingBox(element.Element):
         
     # Used to add messages to the logging box. Right now there's limited room for the messages so don't overuse
     def add_message(self, text="Message"):
-        self.lb.insert(tk.END, strftime("%H:%M:%S: ", gmtime()) + text + '\n')
+        self.lb.insert('1.0', strftime("%H:%M:%S: ", gmtime()) + text + '\n')
     # The Logging box doesn't need to update
     def update(self): 
         pass
