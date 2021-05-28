@@ -1,4 +1,6 @@
-# Introduction
+# HALE Control Panel Python GUI
+
+## Introduction
 This code was developed for the Oregon State University High Altitude Liquid Engine (HALE) rocketry team as a frontend for the Vertical Test Stand control panel. The GUI design was based on the original LabVIEW control panel designed by Karsen Burson.
 
 ## Running the Code
@@ -34,7 +36,7 @@ The display_content() and update() methods are overridden by the child classes s
 
 z determines the front-to-back layering order of elements. Consult enums.py for valid z values.
 
-### `HALE.BarChart`
+### HALE.BarChart
 Visually updates the tank diagrams in the P&ID on the Indicator Panel. 
 
 
@@ -48,7 +50,7 @@ The get_data function passed to the constructor must return a numerical value to
 
 
 
-HALE.Chart
+### HALE.Chart
 Displays live-updating Matplotlib charts on the Engine Panel.
 
 
@@ -63,7 +65,7 @@ The get_data function passed to the constructor must return a tuple of numerical
 
 
 
-HALE.Image
+### HALE.Image
 Imports an image file, performs a resize, and displays the image.
 
 
@@ -73,7 +75,7 @@ The size_x and size_y arguments, common to every element, use the normalized 100
 
 
 
-HALE.IndicatorLight
+### HALE.IndicatorLight
 Emulates an LED indicator light on the panel.
 
 
@@ -87,18 +89,18 @@ The get_data function passed to the constructor must return the color to be disp
 
 
 
-HALE.LoggingBox
+### HALE.LoggingBox
 A logging box that can display alerts or system messages.
 
 
 
 HALE.LoggingBox.__init__(self, *, font=("Arial", 12), text_color="black", bgcolor="white", **kwargs):
 
-    Creates a logging box to display messages. Messages are added to the box by passing  the add_message(text="Message text") method of a LoggingBox object as an event handler for another element (ie, a button).
+Creates a logging box to display messages. Messages are added to the box by passing  the add_message(text="Message text") method of a LoggingBox object as an event handler for another element (ie, a button).
     
 
 
-HALE.NumericDisplay
+### HALE.NumericDisplay
 Displays a numerical value.
 
 
@@ -111,19 +113,19 @@ get_data() format:
 The get_data function passed to the constructor must return a float containing a numeric value to be displayed.
 
 
-HALE.PushButton
+### HALE.PushButton
 Button that generates an onclick event when clicked.
 
 
 HALE.PushButton.__init__(self, *, onclick=None, text="Button", font="Arial Bold", text_color="black", bgcolor="white", font_size=24, **kwargs):
 
-    Creates a push button colored with bgcolor, labelled with the specified text. 
+Creates a push button colored with bgcolor, labelled with the specified text. 
 
 onclick() event handler:
 
-    If an onclick function is passed to the constructor when the push button is initialized, the function will be called every time the button is clicked. This function takes no parameters
+If an onclick function is passed to the constructor when the push button is initialized, the function will be called every time the button is clicked. This function takes no parameters
 
-HALE.Rectangle
+### HALE.Rectangle
 Draws a rectangle on the panel. This was used as part of the background in the center Command Panel.
 
 
@@ -132,23 +134,23 @@ HALE.Rectangle.__init__(self, *, color="green", **kwargs):
 Draws a solid rectangle at the specified size and position in the given color. This can be used to create backgrounds by changing the z parameter.
 
 
-HALE.ToggleButton
+### HALE.ToggleButton
 Toggle button with an on state and off state, and separate event handlers for both.
 
 
 HALE.ToggleButton.__init__(self, *, on_toggleon=None, on_toggleoff=None, off_text="OFF", on_text="ON", font="Arial Bold", font_size=24, off_text_color="white", off_bgcolor="#ff0000", on_text_color="white", on_bgcolor="#339933", starting_state=enums.ToggleStates.OFF,  **kwargs):
     
-    Creates a toggle button with separate label text, text color, button color, and toggle event handlers for both on and off states. 
+Creates a toggle button with separate label text, text color, button color, and toggle event handlers for both on and off states. 
 
 HALE.ToggleButton.get_state():
     
-    Returns the current state of the toggle button to be read by the corresponding valve indicator.
+Returns the current state of the toggle button to be read by the corresponding valve indicator.
 
 on_toggleon() and  on_toggleoff()  event handler:
 
-    If an on_toggleon or on_toggleoff function is passed to the constructor when the toggle button is initialized, the corresponding function will be called every time the button is toggled to a different state. 
+If an on_toggleon or on_toggleoff function is passed to the constructor when the toggle button is initialized, the corresponding function will be called every time the button is toggled to a different state. 
 
-HALE.ValveIndicator
+### HALE.ValveIndicator
 Indicators next to their respective control buttons that show the position of each valve and whether it is actuated. 
 
 
@@ -161,7 +163,7 @@ get_data() format:
 The get_data function passed to the constructor must return either enums.ToggleStates.OFF or enums.ToggleStates.ON.
 
 
-Backend Integration
+## Backend Integration
 To make integration of the backend as simple as possible, all of the functions used for get_data, on_click, on_toggleon and on_toggleoff are defined in separate files, input_handlers.py and output_handlers.py. Examples of function names, corresponding panel elements, and format of data returned (if relevant) are listed in the table below-- this is not meant to be an exhaustive list, as all functions of a given category will operate similarly.
 
 All of the function names are made to be as close to the text displayed next to them as possible. For example, the function igniter_led corresponds to the light on the main panel, while the function igniter_armed_led corresponds to the light on the indicator panel. 
