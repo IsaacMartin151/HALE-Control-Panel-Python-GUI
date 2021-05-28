@@ -4,8 +4,6 @@
 This code was developed for the Oregon State University High Altitude Liquid Engine (HALE) rocketry team as a frontend for the Vertical Test Stand control panel. The GUI design was based on the original LabVIEW control panel designed by Karsen Burson.
 
 ## Running the Code
-GitHub repository link: https://github.com/IsaacMartin151/CS46X
-
 The Python GUI is built in Python 3.9, using the NumPy, Matplotlib, Tkinter, and Pillow libraries. After installing these libraries, run the code using:
 
 `python panel_init.py`
