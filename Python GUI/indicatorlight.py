@@ -8,8 +8,7 @@ import enums
 # All values listed in __init__ below are default values that can be modified by passing in different arguments from wherever the IndicatorLight is created.
 # This file is not intended to be modified
 
-# Right now placeholder random number generators are used to determine whether the lights should be on, make sure you change them to check the DAQ
-# so that get_data actually reflects what's going on
+
 
 class IndicatorLight(element.Element):
     # Constructor for IndicatorLight, can override the default values here by specifying them on creation

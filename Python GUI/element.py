@@ -43,12 +43,16 @@ class Element:
             self.abs_size_y = self.clip_abs_y(size_y)
 
         # These functions are left for the child classes to implement
+
+        #Called periodically every refresh_interval. Child classes should implement data acquisition and display here
         def update(self):
             pass
         
+        #This is called at initialization when the panel is to be drawn for the first time
         def display_content(self):
             pass
         
+        #Handles the periodic calling of update()
         def update_loop(self):
             self.update()
             if (self.refresh_interval):
