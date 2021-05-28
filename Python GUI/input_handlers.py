@@ -118,7 +118,7 @@ def Startup():
 def ABV_WS_SixTen():
     # Get CDaq info here
     if (random_bool()):
-        return "#00FF00"
+        return "#0000FF"
     else:
         return "#FF0000"
 

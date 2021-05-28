@@ -183,4 +183,4 @@ def ox_fill_off():
     pass
 
 def abort():
-    log_box.add_message("Aborted!")
+    pass
