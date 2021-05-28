@@ -1,186 +1,186 @@
 def abv_pr_120():
-    print("Something Pressed")
+    pass
 
 def abv_pr_110():
-    print("Something Pressed")
+    pass
 
 def water_suppression():
-    print("Something Pressed")
+    pass
 
 def cold_flow():
-    print("Something Pressed")
+    pass
 
 def engine_start_up():
-    print("Something Pressed")
+    pass
 
 def fuel_nogo_on():
-    print("Something Pressed")
+    pass
 
 def fuel_nogo_off():
-    print("Something Pressed")
+    pass
 
 def command_nogo_on():
-    print("Something Pressed")
+    pass
 
 def command_nogo_off():
-    print("Something Pressed")
+    pass
 
 def ox_nogo_on():
-    print("Something Pressed")
+    pass
 
 def ox_nogo_off():
-    print("Something Pressed")
+    pass
 
 def go_away_fire():
-    print("Something Pressed")
+    pass
 
 def system_cycle():
-    print("Something Pressed")
+    pass
 
 def one_second_purge_on():
-    print("Something Pressed")
+    pass
 
 def one_second_purge_off():
-    print("Something Pressed")
+    pass
 
 def two_second_purge_on():
-    print("Something Pressed")
+    pass
 
 def two_second_purge_off():
-    print("Something Pressed")
+    pass
 
 def cycle_fuel_vent_on():
-    print("Something Pressed")
+    pass
 
 def cycle_fuel_vent_off():
-    print("Something Pressed")
+    pass
 
 def cycle_ox_vent_on():
-    print("Something Pressed")
+    pass
 
 def cycle_ox_vent_off():
-    print("Something Pressed")
+    pass
 
 def fuel_press_control():
-    print("Something Pressed")
+    pass
 
 def ox_press_control():
-    print("Something Pressed")
+    pass
 
 def valve_firing_sim():
-    print("Something Pressed")
+    pass
 
 def control_stop():
-    print("Something Pressed")
+    pass
 
 def cryo_fill():
-    print("Something Pressed")
+    pass
 
 def record_data():
-    print("Something Pressed")
+    pass
 
 def cam_nogo_on():
-    print("Something Pressed")
+    pass
 
 def cam_nogo_off():
-    print("Something Pressed")
+    pass
 
 def record_nogo_on():
-    print("Something Pressed")
+    pass
 
 def record_nogo_off():
-    print("Something Pressed")
+    pass
 
 def office_nogo_on():
-    print("Something Pressed")
+    pass
 
 def office_nogo_off():
-    print("Something Pressed")
+    pass
 
 def water_supply_nogo_on():
-    print("Something Pressed")
+    pass
 
 def water_supply_nogo_off():
-    print("Something Pressed")
+    pass
 
 def igniter_safe_true():
-    print("Something Pressed")
+    pass
 
 def igniter_safe_false():
-    print("Something Pressed")
+    pass
 
 def nanny_mode_on():
-    print("Something Pressed")
+    pass
 
 def nanny_mode_off():
-    print("Something Pressed")
+    pass
 
 # Ox/Fuel center buttons
 def fuel_press_on():
-    print("Something Pressed")
+    pass
 
 def fuel_press_off():
-    print("Something Pressed")
+    pass
 
 def fuel_vent_on():
-    print("Something Pressed")
+    pass
 
 def fuel_vent_off():
-    print("Something Pressed")
+    pass
 
 def fuel_iso_on():
-    print("Something Pressed")
+    pass
 
 def fuel_iso_off():
-    print("Something Pressed")
+    pass
 
 def fuel_purge_on():
-    print("Something Pressed")
+    pass
 
 def fuel_purge_off():
-    print("Something Pressed")
+    pass
 
 def fuel_main_on():
-    print("Something Pressed")
+    pass
 
 def fuel_main_off():
-    print("Something Pressed")
+    pass
 
 def ox_press_on():
-    print("Something Pressed")
+    pass
 
 def ox_press_off():
-    print("Something Pressed")
+    pass
 
 def ox_vent_on():
-    print("Something Pressed")
+    pass
 
 def ox_vent_off():
-    print("Something Pressed")
+    pass
 
 def ox_iso_on():
-    print("Something Pressed")
+    pass
 
 def ox_iso_off():
-    print("Something Pressed")
+    pass
 
 def ox_chill_on():
-    print("Something Pressed")
+    pass
 
 def ox_chill_off():
-    print("Something Pressed")
+    pass
 
 def ox_main_on():
-    print("Something Pressed")
+    pass
 
 def ox_main_off():
-    print("Something Pressed")
+    pass
 
 def ox_fill_on():
-    print("Something Pressed")
+    pass
 
 def ox_fill_off():
-    print("Something Pressed")
+    pass
 
 def abort():
-    print("Something Pressed")
+    log_box.add_message("Aborted!")

@@ -1,5 +1,7 @@
 import tkinter as tk
+from tkinter import scrolledtext
 from tkinter import font as tkFont
+from time import gmtime, strftime
 import element
 import time
 
@@ -21,12 +23,12 @@ class LoggingBox(element.Element):
 
     # Makes the logging box visible on the panel
     def display_content(self):
-        self.lb = tk.Listbox(self.containing_frame, width=self.abs_size_x, font=self.font, fg=self.text_color)
+        self.lb = scrolledtext.ScrolledText(self.containing_frame)
         self.lb.pack(expand=True, fill="both")
         
     # Used to add messages to the logging box. Right now there's limited room for the messages so don't overuse
     def add_message(self, text="Message"):
-        self.lb.insert(tk.END, text)
+        self.lb.insert(tk.END, strftime("%H:%M:%S: ", gmtime()) + text + '\n')
 
     # The Logging box doesn't need to update
     def update(self): 
