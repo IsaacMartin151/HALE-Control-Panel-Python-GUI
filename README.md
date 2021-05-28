@@ -1,13 +1,14 @@
-Introduction
+# Introduction
 This code was developed for the Oregon State University High Altitude Liquid Engine (HALE) rocketry team as a frontend for the Vertical Test Stand control panel. The GUI design was based on the original LabVIEW control panel designed by Karsen Burson.
-Running the Code
+
+## Running the Code
 GitHub repository link: https://github.com/IsaacMartin151/CS46X
 
 The Python GUI is built in Python 3.9, using the NumPy, Matplotlib, Tkinter, and Pillow libraries. After installing these libraries, run the code using:
 
-python panel_init.py
+`python panel_init.py`
 
-Overall Code Structure
+## Overall Code Structure
 The file panel_init.py is where all three panels and their elements are declared and initialized. The code calls the Interface constructor to create an object that will contain the Panel objects, then adds each panel and their respective elements. New elements should be added here.
 
 The Tkinter elements that comprise the three panels are abstracted behind Python classes to simplify the process of creating these elements. The constructor and methods for the class Element define attributes that are common to all Tkinter elements on the panel, and each derived class(BarChart, Chart, Image, IndicatorLight, LoggingBox, NumericDisplay, PushButton, Rectangle, ToggleButton, ValveIndicator) defines attributes specific to that element, and inherits all members and attributes of the base class. All of these element classes are consolidated and imported as a module through the file HALE.py. To add a new element, the call to the respective constructor in panel_init.py only needs to specify parameters relevant to that element, such as text or color, and the constructor will handle the initialization of the element and display it on the panel.
@@ -21,8 +22,9 @@ The element positioning coordinate system:
 
 
 
-Element Specifications
-HALE.Element
+## Element Specifications
+
+### `HALE.Element`
 The base class from which all other element classes are derived. This class exists to handle attributes common to every element (z, size_x, size_y, pos_x, pos_y, anchor, refresh_interval) and displays the element on the panel, and should never be used directly when initializing a new element. For each following Element child class, only the attributes specific to that child class will be described.
 
 The calculate_positions() method uses the normalized 1000x1000 coordinate system to convert the relative size_x, size_y, pos_x, pos_y and anchor of the element to an absolute size and position for the given panel dimensions. Elements can then make use of abs_size_x, abs_size_y, abs_pos_x and abs_pos_y to perform absolute positioning. The anchor determines whether the position specified is relative to a specific corner of the element or its center. For example, an element with its anchor specified as HALE.AnchorPoints.CENTER, positioned at (500,500) will have its center at the panel’s (500,500).  By default the anchor is set to the top-left of an element. Consult enums.py for valid anchor values.
