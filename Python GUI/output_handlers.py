@@ -1,8 +1,4 @@
-def abv_pr_120():
-    pass
-
-def abv_pr_110():
-    pass
+# These are the event handlers for the buttons on the command panel
 
 def water_suppression():
     pass
