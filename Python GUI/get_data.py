@@ -425,3 +425,47 @@ def CryoFill():
     else:
         return "#FF0000"
 
+#def ox_press(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def ox_vent(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def ox_iso(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def ox_chill(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def ox_main(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def ox_fill(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def fuel_press(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def fuel_vent(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def fuel_iso(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def fuel_purge(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
+#def fuel_main(z):
+#    # Get CDaq info here
+#    return z.get_state()
+#
