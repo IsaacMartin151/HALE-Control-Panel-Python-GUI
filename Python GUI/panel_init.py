@@ -216,7 +216,7 @@ main_panel.add_element(HALE.ValveIndicator(state=HALE.ToggleStates.OFF, get_data
 
 
 #bottom
-main_panel.add_element(HALE.PushButton(text="ABORT", onclick = lambda: log_box.add_message("Aborted!"), text_color="white", bgcolor = "#5dc926", font_size= 48, pos_x = 315, pos_y = 840, size_x = 380, size_y = 150))
+main_panel.add_element(HALE.PushButton(text="ABORT", onclick = lambda: log_box.add_message("Aborted!", color = "#FF2222"), text_color="white", bgcolor = "#5dc926", font_size= 48, pos_x = 315, pos_y = 840, size_x = 380, size_y = 150))
 
 
 
