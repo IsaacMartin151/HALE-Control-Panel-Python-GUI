@@ -24,7 +24,7 @@ The element positioning coordinate system:
 
 ## Element Specifications
 
-### `HALE.Element`
+### HALE.Element
 The base class from which all other element classes are derived. This class exists to handle attributes common to every element (z, size_x, size_y, pos_x, pos_y, anchor, refresh_interval) and displays the element on the panel, and should never be used directly when initializing a new element. For each following Element child class, only the attributes specific to that child class will be described.
 
 The calculate_positions() method uses the normalized 1000x1000 coordinate system to convert the relative size_x, size_y, pos_x, pos_y and anchor of the element to an absolute size and position for the given panel dimensions. Elements can then make use of abs_size_x, abs_size_y, abs_pos_x and abs_pos_y to perform absolute positioning. The anchor determines whether the position specified is relative to a specific corner of the element or its center. For example, an element with its anchor specified as HALE.AnchorPoints.CENTER, positioned at (500,500) will have its center at the panel’s (500,500).  By default the anchor is set to the top-left of an element. Consult enums.py for valid anchor values.
@@ -34,7 +34,7 @@ The display_content() and update() methods are overridden by the child classes s
 
 z determines the front-to-back layering order of elements. Consult enums.py for valid z values.
 
-HALE.BarChart
+### `HALE.BarChart`
 Visually updates the tank diagrams in the P&ID on the Indicator Panel. 
 
 
