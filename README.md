@@ -193,7 +193,7 @@ All of the function names are made to be as close to the text displayed next to 
 | `igniter_led` | Command Panel Igniter Indicator Light | Hexadecimal RGB string |
 | `ox_main_valve_led` | Engine Panel Ox Indicator Light | Hexadecimal RGB string |
 | `TC_OX_210_numdisplay` | Indicator panel TC-OX-210 Numeric Display | Numeric value |
-| `fuel_barchart` | Indicator panel red bar inside image | Numeric value |
+| `fuel_barchart` | Indicator panel red bar inside image | Numeric value |     
 
 
 ### `on_click, on_toggleon, on_toggleoff` Function Examples (in output_handlers.py)
