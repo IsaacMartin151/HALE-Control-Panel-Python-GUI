@@ -186,39 +186,24 @@ To make integration of the backend as simple as possible, all of the functions u
 
 All of the function names are made to be as close to the text displayed next to them as possible. For example, the function igniter_led corresponds to the light on the main panel, while the function igniter_armed_led corresponds to the light on the indicator panel. 
 
-get_data Function Examples (in input_handlers.py)
-Function Name
-Panel Element
-Data Format
-igniter_led
-Command Panel Igniter Indicator Light
-Hexadecimal color string (“#FF0000” or “#00FF00”)
-ox_main_valve_led
-Engine Panel Ox Indicator Light
-Hexadecimal color string (“#FF0000” or “#00FF00”)
-TC_OX_210_numdisplay
-Indicator panel TC-OX-210 Numeric Display
-Numeric value
-fuel_barchart
-Indicator panel red bar inside image
-Numeric value
+### `get_data` Function Examples (in input_handlers.py)
+
+| Function Name | Panel Element | Data Format |
+|---------------|---------------|-------------|
+| `igniter_led` | Command Panel Igniter Indicator Light | Hexadecimal RGB string |
+| `ox_main_valve_led` | Engine Panel Ox Indicator Light | Hexadecimal RGB string |
+| `TC_OX_210_numdisplay` | Indicator panel TC-OX-210 Numeric Display | Numeric value |
+| `fuel_barchart` | Indicator panel red bar inside image | Numeric value |
 
 
+### `on_click, on_toggleon, on_toggleoff` Function Examples (in output_handlers.py)
 
-
-
-on_click, on_toggleon, on_toggleoff Function Examples (in output_handlers.py)
 ToggleButton elements have toggle-on and toggle-off functions defined. PushButtons only have one onclick function.
 
-Function Name
-Panel Element
-water_suppression
-Main Panel Water Suppression PushButton
-engine_start_up
-Main Panel Engine Start Up PushButton
-cycle_fuel_vent_on
-Main Panel Cycle Fuel Vent ToggleButton
-cycle_fuel_vent_off
-Main Panel Cycle Fuel Vent ToggleButton (Same as above)
+| Function Name | Panel Element |
+| `water_suppression` | Main Panel Water Suppression PushButton |
+| `engine_start_up` | Main Panel Engine Start Up PushButton |
+| `cycle_fuel_vent_on` | Main Panel Cycle Fuel Vent ToggleButton |
+| `cycle_fuel_vent_off` | Main Panel Cycle Fuel Vent ToggleButton |
 
 
