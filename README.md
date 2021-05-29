@@ -17,10 +17,9 @@ A relative coordinate system is used to position elements on a given panel. The 
 
 NOTE: Panel sizes are in absolute pixel dimensions, Element positions and sizes are in normalized 1000x1000 dimensions.
 
-
 The element positioning coordinate system:
 
-![1000x1000 coords](https://raw.githubusercontent.com/IsaacMartin151/CS46X/main/examples/coords.PNG)
+![1000x1000 coords](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/coords.PNG)
 
 
 ## Element Specifications
@@ -30,14 +29,14 @@ The base class from which all other element classes are derived. This class exis
 
 The calculate_positions() method uses the normalized 1000x1000 coordinate system to convert the relative size_x, size_y, pos_x, pos_y and anchor of the element to an absolute size and position for the given panel dimensions. Elements can then make use of abs_size_x, abs_size_y, abs_pos_x and abs_pos_y to perform absolute positioning. The anchor determines whether the position specified is relative to a specific corner of the element or its center. For example, an element with its anchor specified as HALE.AnchorPoints.CENTER, positioned at (500,500) will have its center at the panel’s (500,500).  By default the anchor is set to the top-left of an element. Consult enums.py for valid anchor values.
 
-
 The display_content() and update() methods are overridden by the child classes so that each element type displays and updates itself according to its given purpose, if necessary. These live-updating element classes use the attributes get_data and refresh_interval. get_data is a function passed to the constructor (of elements that accept data) that returns data with which to update the element, the format of which is specified for each element below. refresh_interval is a number given in milliseconds at which data is polled periodically. If a refresh_interval is not specified, the element will not call its get_data function except during initialization.
 
 z determines the front-to-back layering order of elements. Consult enums.py for valid z values.
 
+
 ### HALE.BarChart
 Visually updates the tank diagrams in the P&ID on the Indicator Panel. 
-
+![barchart1](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/barchart1.PNG) ![barchart2](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/barchart2.PNG)
 
 HALE.BarChart.__init__(self, *, starting_value=50, min_value=0, max_value=100, barcolor="#11FF11", bgcolor=None, get_data=None, **kwargs):
 
