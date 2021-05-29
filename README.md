@@ -39,6 +39,7 @@ z determines the front-to-back layering order of elements. Consult enums.py for 
 
 
 ### HALE.BarChart
+
 Visually updates the tank diagrams in the P&ID on the Indicator Panel. 
 
 ![barchart1](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/barchart1.PNG) ![barchart2](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/barchart2.PNG)
@@ -67,52 +68,54 @@ The lines parameter determines the color and titles of the different lines on th
 The get_data function passed to the constructor must return a tuple of numerical values representing the most recent measurement for all lines on the chart. For example if the lines parameter is [("Volume", "#FF0000"), ("Temperature", "#FFFF00")], get data must return a tuple (float, float), with the first float being the most recent volume value and the second being the temperature. X-axis values are automatically set to the time at which the data was received by the chart.
 
 
-
-
 ### HALE.Image
+
 Imports an image file, performs a resize, and displays the image.
 
+![image](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/image.PNG)
 
-HALE.Image__init__(self, *, file="./hale.png", resize_x=None, resize_y=None, **kwargs):
+`HALE.Image__init__(self, *, file="./hale.png", resize_x=None, resize_y=None, **kwargs):`
 
 The size_x and size_y arguments, common to every element, use the normalized 1000x1000 coordinate system, and are used to resize the image to the appropriate size.
 
 
-
 ### HALE.IndicatorLight
+
 Emulates an LED indicator light on the panel.
 
+![indicatorlight](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/indicatorlight.PNG)
 
-HALE.IndicatorLight.__init__(self, *, text="Indicator Label", starting_color="green", text_color="white", font=("Arial", 12), bgcolor=None, get_data=None, **kwargs):
+`HALE.IndicatorLight.__init__(self, *, text="Indicator Label", starting_color="green", text_color="white", font=("Arial", 12), bgcolor=None, get_data=None, **kwargs):`
 
 Creates an LED with the specified colors and label text, and updates according to the data received from get_data() at the specified refresh_interval. If text==None, the LED is created without a label and fills to the exact size specified by size_x and size_y.
 
-get_data() format:
+`get_data()` format:
 
 The get_data function passed to the constructor must return the color to be displayed by the LED as either an RGB hex string (e.x. “#03ADDDD”) or the name of the color. A chart with color names can be found here: http://www.science.smith.edu/dftwiki/index.php/Color_Charts_for_TKinter
 
 
-
 ### HALE.LoggingBox
+
 A logging box that can display alerts or system messages.
 
+![loggingbox](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/loggingbox.PNG)
 
-
-HALE.LoggingBox.__init__(self, *, font=("Arial", 12), text_color="black", bgcolor="white", **kwargs):
+`HALE.LoggingBox.__init__(self, *, font=("Arial", 12), text_color="black", bgcolor="white", **kwargs):`
 
 Creates a logging box to display messages. Messages are added to the box by passing  the add_message(text="Message text") method of a LoggingBox object as an event handler for another element (ie, a button).
-    
 
 
 ### HALE.NumericDisplay
+
 Displays a numerical value.
 
+![numericdisplay](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/numericdisplay.PNG)
 
-HALE.NumericDisplay.__init__(self, *, text="Indicator Label", starting_value=0, text_color="white", font=("Arial", 12), bgcolor=None, get_data=None, **kwargs):
+`HALE.NumericDisplay.__init__(self, *, text="Indicator Label", starting_value=0, text_color="white", font=("Arial", 12), bgcolor=None, get_data=None, **kwargs):`
 
 Creates a numeric display with the given label text, label text color and font, and starting value. The value displayed updates according to the data received from get_data() at the specified refresh_interval.
 
-get_data() format:
+`get_data()` format:
 
 The get_data function passed to the constructor must return a float containing a numeric value to be displayed.
 
