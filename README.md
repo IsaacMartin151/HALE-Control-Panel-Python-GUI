@@ -19,7 +19,7 @@ NOTE: Panel sizes are in absolute pixel dimensions, Element positions and sizes 
 
 
 The element positioning coordinate system:
-![1000x1000 coords](https://IsaacMartin151.github.com/images/coords.png)
+![1000x1000 coords](https://raw.githubusercontent.com/IsaacMartin151/CS46X/main/examples/coords.PNG)
 
 
 ## Element Specifications
