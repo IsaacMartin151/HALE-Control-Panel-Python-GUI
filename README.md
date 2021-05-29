@@ -40,27 +40,29 @@ z determines the front-to-back layering order of elements. Consult enums.py for 
 
 ### HALE.BarChart
 Visually updates the tank diagrams in the P&ID on the Indicator Panel. 
+
 ![barchart1](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/barchart1.PNG) ![barchart2](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/barchart2.PNG)
 
-HALE.BarChart.__init__(self, *, starting_value=50, min_value=0, max_value=100, barcolor="#11FF11", bgcolor=None, get_data=None, **kwargs):
+`HALE.BarChart.__init__(self, *, starting_value=50, min_value=0, max_value=100, barcolor="#11FF11", bgcolor=None, get_data=None, **kwargs):`
 
 A bar is created with the specified minimum and maximum values to display, and the specified bar and background color. The value it displays updates according to the data received from get_data() at the specified refresh_interval.
 
-get_data() format:
+`get_data()` format:
     
 The get_data function passed to the constructor must return a numerical value to be displayed. If this value is not within the range [min_value, max_value], it is truncated to fit within that range.
 
 
-
 ### HALE.Chart
+
 Displays live-updating Matplotlib charts on the Engine Panel.
 
+![chart](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/chart.PNG)
 
-HALE.Chart.__init__(self, *, title="Chart title", font="Arial Bold", xlabel="Time", max_points=10, lines=[("Series 1", "#FF0000")], ylabel="Pressure", text_color="black", get_data=None, font_size=24, **kwargs):
+`HALE.Chart.__init__(self, *, title="Chart title", font="Arial Bold", xlabel="Time", max_points=10, lines=[("Series 1", "#FF0000")], ylabel="Pressure", text_color="black", get_data=None, font_size=24, **kwargs):`
     
 The lines parameter determines the color and titles of the different lines on the chart. Consult the code for examples. max_points is the number of data points displayed on the graph at one time. 
 
-get_data() format:
+`get_data()` format:
     
 The get_data function passed to the constructor must return a tuple of numerical values representing the most recent measurement for all lines on the chart. For example if the lines parameter is [("Volume", "#FF0000"), ("Temperature", "#FFFF00")], get data must return a tuple (float, float), with the first float being the most recent volume value and the second being the temperature. X-axis values are automatically set to the time at which the data was received by the chart.
 
