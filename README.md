@@ -201,6 +201,7 @@ All of the function names are made to be as close to the text displayed next to 
 ToggleButton elements have toggle-on and toggle-off functions defined. PushButtons only have one onclick function.
 
 | Function Name | Panel Element |
+|---------------|---------------|
 | `water_suppression` | Main Panel Water Suppression PushButton |
 | `engine_start_up` | Main Panel Engine Start Up PushButton |
 | `cycle_fuel_vent_on` | Main Panel Cycle Fuel Vent ToggleButton |
