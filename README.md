@@ -38,10 +38,6 @@ The display_content() and update() methods are overridden by the child classes s
 z determines the front-to-back layering order of elements. Consult enums.py for valid z values.
 
 
-
-
-
-
 ### HALE.BarChart
 
 Visually updates the tank diagrams in the P&ID on the Indicator Panel. 
@@ -125,56 +121,67 @@ The get_data function passed to the constructor must return a float containing a
 
 
 ### HALE.PushButton
+
 Button that generates an onclick event when clicked.
 
+![pushbutton](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/pushbutton.PNG)
 
-HALE.PushButton.__init__(self, *, onclick=None, text="Button", font="Arial Bold", text_color="black", bgcolor="white", font_size=24, **kwargs):
+`HALE.PushButton.__init__(self, *, onclick=None, text="Button", font="Arial Bold", text_color="black", bgcolor="white", font_size=24, **kwargs):`
 
 Creates a push button colored with bgcolor, labelled with the specified text. 
 
-onclick() event handler:
+`onclick()` event handler:
 
-If an onclick function is passed to the constructor when the push button is initialized, the function will be called every time the button is clicked. This function takes no parameters
+If an onclick function is passed to the constructor when the push button is initialized, the function will be called every time the button is clicked. This function takes no parameters.
+
 
 ### HALE.Rectangle
+
 Draws a rectangle on the panel. This was used as part of the background in the center Command Panel.
 
+![rectangle](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/rectangle.PNG)
 
-HALE.Rectangle.__init__(self, *, color="green", **kwargs):
+`HALE.Rectangle.__init__(self, *, color="green", **kwargs):`
     
 Draws a solid rectangle at the specified size and position in the given color. This can be used to create backgrounds by changing the z parameter.
 
 
 ### HALE.ToggleButton
+
 Toggle button with an on state and off state, and separate event handlers for both.
 
+![togglebutton](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/togglebutton.PNG)
 
-HALE.ToggleButton.__init__(self, *, on_toggleon=None, on_toggleoff=None, off_text="OFF", on_text="ON", font="Arial Bold", font_size=24, off_text_color="white", off_bgcolor="#ff0000", on_text_color="white", on_bgcolor="#339933", starting_state=enums.ToggleStates.OFF,  **kwargs):
+`HALE.ToggleButton.__init__(self, *, on_toggleon=None, on_toggleoff=None, off_text="OFF", on_text="ON", font="Arial Bold", font_size=24, off_text_color="white", off_bgcolor="#ff0000", on_text_color="white", on_bgcolor="#339933", starting_state=enums.ToggleStates.OFF,  **kwargs):`
     
 Creates a toggle button with separate label text, text color, button color, and toggle event handlers for both on and off states. 
 
-HALE.ToggleButton.get_state():
+`HALE.ToggleButton.get_state():`
     
 Returns the current state of the toggle button to be read by the corresponding valve indicator.
 
-on_toggleon() and  on_toggleoff()  event handler:
+`on_toggleon()` and  `on_toggleoff()`  event handler:
 
 If an on_toggleon or on_toggleoff function is passed to the constructor when the toggle button is initialized, the corresponding function will be called every time the button is toggled to a different state. 
 
+
 ### HALE.ValveIndicator
+
 Indicators next to their respective control buttons that show the position of each valve and whether it is actuated. 
 
+![valveindicator](https://raw.githubusercontent.com/IsaacMartin151/HALE-Control-Panel-Python-GUI/main/examples/valveindicator.PNG)
 
-HALE.ValveIndicator.__init__(self, *, state=enums.ToggleStates.OFF, get_data=None, **kwargs):
+`HALE.ValveIndicator.__init__(self, *, state=enums.ToggleStates.OFF, get_data=None, **kwargs):`
 
 Draws a rectangle with color and text that changes depending on the state received from get_data() at the specified refresh_interval.. The indicators currently update based on the state of the toggle button that controls the corresponding valve, using the ToggleButton.get_state() method, but can be changed to update based on data from limit switches or other hardware by changing the get_data function passed in when the element is initialized.
 
-get_data() format:
+`get_data()` format:
     
 The get_data function passed to the constructor must return either enums.ToggleStates.OFF or enums.ToggleStates.ON.
 
 
 ## Backend Integration
+
 To make integration of the backend as simple as possible, all of the functions used for get_data, on_click, on_toggleon and on_toggleoff are defined in separate files, input_handlers.py and output_handlers.py. Examples of function names, corresponding panel elements, and format of data returned (if relevant) are listed in the table below-- this is not meant to be an exhaustive list, as all functions of a given category will operate similarly.
 
 All of the function names are made to be as close to the text displayed next to them as possible. For example, the function igniter_led corresponds to the light on the main panel, while the function igniter_armed_led corresponds to the light on the indicator panel. 
