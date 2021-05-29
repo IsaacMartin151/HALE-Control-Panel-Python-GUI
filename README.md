@@ -38,6 +38,10 @@ The display_content() and update() methods are overridden by the child classes s
 z determines the front-to-back layering order of elements. Consult enums.py for valid z values.
 
 
+
+
+
+
 ### HALE.BarChart
 
 Visually updates the tank diagrams in the P&ID on the Indicator Panel. 
